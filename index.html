@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Таро Мастер | Путь к духовному познанию</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="stars-bg"></div>
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    
+    <header class="header">
+        <nav class="nav">
+            <div class="nav__logo">
+                <div class="logo-icon">✧</div>
+                <span>Таро Мастер</span>
+            </div>
+            <div class="nav__menu">
+                <a href="#about" class="nav__link">О практике</a>
+                <a href="#programs" class="nav__link">Программы</a>
+                <a href="#process" class="nav__link">Процесс</a>
+                <a href="#contact" class="nav__link">Контакты</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero__content">
+                <div class="hero__text">
+                    <h1 class="hero__title">
+                        <span class="title-accent">Откройте</span> врата мудрости Таро
+                    </h1>
+                    <p class="hero__subtitle">
+                        Погрузитесь в мистический мир карт Таро и раскройте свою интуицию. 
+                        Обучение старшим и младшим арканам — это путь к глубокому самопознанию и духовному росту.
+                    </p>
+                    <div class="hero__buttons">
+                        <a href="https://t.me/Daniil_06_06_2001" class="btn btn--primary">
+                            <span class="btn__icon">🔮</span>
+                            Начать путешествие
+                        </a>
+                        <button class="btn btn--secondary" onclick="scrollToSection('about')">
+                            Узнать больше
+                        </button>
+                    </div>
+                </div>
+                <div class="hero__visual">
+                    <div class="tarot-cards">
+                        <div class="card card-1" data-tilt>
+                            <div class="card__front">🌙</div>
+                            <div class="card__back">✨</div>
+                        </div>
+                        <div class="card card-2" data-tilt>
+                            <div class="card__front">⭐</div>
+                            <div class="card__back">🌟</div>
+                        </div>
+                        <div class="card card-3" data-tilt>
+                            <div class="card__front">💫</div>
+                            <div class="card__back">✧</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero__scroll">
+                <div class="scroll-indicator"></div>
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Древняя мудрость в современном мире</h2>
+                    <p class="section-subtitle">
+                        Карты Таро — это не просто предсказание, а мощный инструмент для самопознания и духовного развития
+                    </p>
+                </div>
+                
+                <div class="about__grid">
+                    <div class="about__item" data-aos="fade-up">
+                        <div class="about__icon">🔮</div>
+                        <h3>Символический язык</h3>
+                        <p>
+                            Каждая карта — это ключ к пониманию глубинных процессов души и закономерностей вселенной.
+                        </p>
+                    </div>
+                    <div class="about__item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="about__icon">🌟</div>
+                        <h3>Энергетическая связь</h3>
+                        <p>
+                            Научитесь чувствовать вибрации карт и устанавливать глубокую связь с колодой.
+                        </p>
+                    </div>
+                    <div class="about__item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="about__icon">💫</div>
+                        <h3>Духовный рост</h3>
+                        <p>
+                            Таро становится зеркалом вашей души, помогая видеть скрытые аспекты личности.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="programs" id="programs">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Путь познания Таро</h2>
+                    <p class="section-subtitle">
+                        Комплексное обучение от основ до мастерского владения картами
+                    </p>
+                </div>
+                
+                <div class="programs__grid">
+                    <div class="program-card" data-aos="fade-up">
+                        <div class="program-card__header">
+                            <div class="program-card__icon">👑</div>
+                            <h3>Старшие арканы</h3>
+                            <div class="program-card__level">Фундаментальный уровень</div>
+                        </div>
+                        <div class="program-card__content">
+                            <p>
+                                Погружение в мир великих архетипов. 22 карты Старших арканов — это карта вашей души, 
+                                отражающая духовные уроки и этапы эволюции.
+                            </p>
+                            <ul class="program-card__features">
+                                <li>Глубокая символика каждого аркана</li>
+                                <li>Связь с планетами и знаками зодиака</li>
+                                <li>Медитативные практики с картами</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="program-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="program-card__header">
+                            <div class="program-card__icon">⚔️</div>
+                            <h3>Младшие арканы</h3>
+                            <div class="program-card__level">Практический уровень</div>
+                        </div>
+                        <div class="program-card__content">
+                            <p>
+                                56 карт Младших арканов отражают повседневные ситуации и эмоциональные состояния. 
+                                Научитесь читать язык стихий и мастей.
+                            </p>
+                            <ul class="program-card__features">
+                                <li>Значение четырех мастей и стихий</li>
+                                <li>Нумерологическая система карт</li>
+                                <li>Практические расклады на каждый день</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="program-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="program-card__header">
+                            <div class="program-card__icon">🔮</div>
+                            <h3>Интуитивное чтение</h3>
+                            <div class="program-card__level">Продвинутый уровень</div>
+                        </div>
+                        <div class="program-card__content">
+                            <p>
+                                Развитие внутреннего зрения и способности чувствовать энергию карт. 
+                                Переход от механического запоминания к истинному пониманию.
+                            </p>
+                            <ul class="program-card__features">
+                                <li>Упражнения на развитие интуиции</li>
+                                <li>Работа с подсознанием через карты</li>
+                                <li>Создание личной связи с колодой</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="special-programs">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Дополнительные практики</h2>
+                    <p class="section-subtitle">
+                        Глубокая работа с энергетическими блоками и расширением сознания
+                    </p>
+                </div>
+                
+                <div class="special-grid">
+                    <div class="special-card" data-aos="fade-up">
+                        <div class="special-card__image">
+                            <div class="special-card__overlay">
+                                <div class="special-card__icon">💎</div>
+                            </div>
+                        </div>
+                        <div class="special-card__content">
+                            <h3>Финансовое изобилие</h3>
+                            <p>
+                                Работа с подсознательными установками, блокирующими денежный поток. 
+                                Активация энергии процветания через символы Таро.
+                            </p>
+                            <div class="special-card__tags">
+                                <span>Денежные расклады</span>
+                                <span>Энергетические практики</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="special-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="special-card__image">
+                            <div class="special-card__overlay">
+                                <div class="special-card__icon">🌟</div>
+                            </div>
+                        </div>
+                        <div class="special-card__content">
+                            <h3>Духовная трансформация</h3>
+                            <p>
+                                Практики для расширения сознания и подключения к высшему "Я". 
+                                Медитации с картами для глубокого внутреннего познания.
+                            </p>
+                            <div class="special-card__tags">
+                                <span>Медитации</span>
+                                <span>Работа с энергией</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="special-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="special-card__image">
+                            <div class="special-card__overlay">
+                                <div class="special-card__icon">🔓</div>
+                            </div>
+                        </div>
+                        <div class="special-card__content">
+                            <h3>Освобождение от блоков</h3>
+                            <p>
+                                Работа с психологическими травмами и ограничивающими убеждениями 
+                                через архетипическую мудрость Таро.
+                            </p>
+                            <div class="special-card__tags">
+                                <span>Психология Таро</span>
+                                <span>Трансформация</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="process" id="process">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Ваш путь в мир Таро</h2>
+                    <p class="section-subtitle">
+                        Простые шаги к глубокому познанию древней мудрости
+                    </p>
+                </div>
+                
+                <div class="process__timeline">
+                    <div class="process__step" data-aos="fade-up">
+                        <div class="process__number">1</div>
+                        <div class="process__content">
+                            <h3>Первый контакт</h3>
+                            <p>
+                                Напишите администратору в Telegram и получите подробную информацию 
+                                о программах обучения и доступных форматах.
+                            </p>
+                            <a href="https://t.me/Daniil_06_06_2001" class="process__link">
+                                Написать в Telegram
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="process__step" data-aos="fade-up" data-aos-delay="100">
+                        <div class="process__number">2</div>
+                        <div class="process__content">
+                            <h3>Выбор пути</h3>
+                            <p>
+                                Определите уровень подготовки и выберите подходящую программу. 
+                                Мы поможем найти идеальный формат для ваших целей.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="process__step" data-aos="fade-up" data-aos-delay="200">
+                        <div class="process__number">3</div>
+                        <div class="process__content">
+                            <h3>Погружение в знания</h3>
+                            <p>
+                                Начните изучение арканов, практикуйтесь с картами и развивайте интуицию 
+                                под руководством опытного наставника.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="process__step" data-aos="fade-up" data-aos-delay="300">
+                        <div class="process__number">4</div>
+                        <div class="process__content">
+                            <h3>Мастерство</h3>
+                            <p>
+                                Станьте уверенным таро-практиком, способным глубоко читать карты 
+                                и помогать другим на их духовном пути.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <div class="container">
+                <div class="contact__content">
+                    <div class="contact__text">
+                        <h2 class="section-title">Начните свое путешествие сегодня</h2>
+                        <p>
+                            Каждый день откладывания — это упущенная возможность познать себя глубже. 
+                            Сделайте первый шаг к мудрости Таро прямо сейчас.
+                        </p>
+                        <div class="contact__info">
+                            <div class="contact__item">
+                                <div class="contact__icon">📱</div>
+                                <div>
+                                    <strong>Telegram:</strong>
+                                    <a href="https://t.me/Daniil_06_06_2001">@Daniil_06_06_2001</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact__visual">
+                        <div class="mystical-orb">
+                            <div class="orb-inner"></div>
+                            <div class="orb-particles"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__logo">
+                    <div class="logo-icon">✧</div>
+                    <span>Таро Мастер</span>
+                </div>
+                <p class="footer__text">
+                    © 2026 Таро Мастер. Путь к духовному познанию через древнюю мудрость карт.
+                </p>
+                <div class="footer__social">
+                    <a href="https://t.me/Daniil_06_06_2001" class="social-link">
+                        <span>📱</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
