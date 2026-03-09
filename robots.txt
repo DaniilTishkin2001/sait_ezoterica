@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://username.github.io/image/sitemap.xml
+Sitemap: https://harekrishna.github.io/image/sitemap.xml
 
 # Block unnecessary files
 Disallow: /admin/

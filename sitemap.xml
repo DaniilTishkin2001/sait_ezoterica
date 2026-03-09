@@ -6,7 +6,7 @@
     
     <!-- Главная страница -->
     <url>
-        <loc>https://username.github.io/image/</loc>
+        <loc>https://harekrishna.github.io/image/</loc>
         <lastmod>2026-03-09</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
@@ -14,7 +14,7 @@
     
     <!-- О практике -->
     <url>
-        <loc>https://username.github.io/image/#about</loc>
+        <loc>https://harekrishna.github.io/image/#about</loc>
         <lastmod>2026-03-09</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -22,7 +22,7 @@
     
     <!-- Программы обучения -->
     <url>
-        <loc>https://username.github.io/image/#programs</loc>
+        <loc>https://harekrishna.github.io/image/#programs</loc>
         <lastmod>2026-03-09</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
@@ -30,7 +30,7 @@
     
     <!-- План занятий -->
     <url>
-        <loc>https://username.github.io/image/#study-plan</loc>
+        <loc>https://harekrishna.github.io/image/#study-plan</loc>
         <lastmod>2026-03-09</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -38,7 +38,7 @@
     
     <!-- Дополнительные практики -->
     <url>
-        <loc>https://username.github.io/image/#special-programs</loc>
+        <loc>https://harekrishna.github.io/image/#special-programs</loc>
         <lastmod>2026-03-09</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
@@ -46,7 +46,7 @@
     
     <!-- Метафизический глосарий -->
     <url>
-        <loc>https://username.github.io/image/#glossary</loc>
+        <loc>https://harekrishna.github.io/image/#glossary</loc>
         <lastmod>2026-03-09</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
@@ -54,7 +54,7 @@
     
     <!-- Процесс обучения -->
     <url>
-        <loc>https://username.github.io/image/#process</loc>
+        <loc>https://harekrishna.github.io/image/#process</loc>
         <lastmod>2026-03-09</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
@@ -62,7 +62,7 @@
     
     <!-- Контакты -->
     <url>
-        <loc>https://username.github.io/image/#contact</loc>
+        <loc>https://harekrishna.github.io/image/#contact</loc>
         <lastmod>2026-03-09</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.5</priority>
