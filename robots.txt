@@ -1,21 +1,5 @@
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://harekrishna.github.io/image/sitemap.xml
-
-# Block unnecessary files
-Disallow: /admin/
-Disallow: /private/
-Disallow: /*.json$
-Disallow: /*?*$
-Disallow: /*.js$
-Disallow: /*.css$
-
-# Allow important files
-Allow: /css/style.css
-Allow: /js/main.js
-Allow: /img/
-
-# Crawl delay
+Sitemap: https://amadeya.org/sitemap.xml
 Crawl-delay: 1
