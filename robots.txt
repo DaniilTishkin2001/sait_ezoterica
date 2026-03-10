@@ -1,35 +1,4 @@
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://harekrishna.github.io/image/sitemap.xml
-
-# Региональные страницы для Google Ads
-Allow: /?region=moscow
-Allow: /?region=spb
-Allow: /?region=novosibirsk
-Allow: /?region=ekaterinburg
-Allow: /?region=kazan
-Allow: /?region=nnovgorod
-Allow: /?region=chelyabinsk
-Allow: /?region=omsk
-Allow: /?region=samara
-Allow: /?region=rostov
-Allow: /?region=ufa
-Allow: /?region=krasnodar
-Allow: /?region=perm
-Allow: /?region=voronezh
-Allow: /?region=volgograd
-
-# Запретить индексацию служебных файлов
-Disallow: /js/
-Disallow: /css/
-Disallow: /img/
-Disallow: /.well-known/
-
-# Crawl delay
-Crawl-delay: 1
-
-# Host directive для Google
-Host: harekrishna.github.io
-
+Sitemap: https://amadeya.org/sitemap.xml
