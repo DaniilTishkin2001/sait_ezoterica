@@ -2056,9 +2056,55 @@
         </svg>
     </a>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
-    <script src="js/main.js"></script>
+    <!-- Оптимизированная загрузка скриптов для PageSpeed -->
+    <script>
+    // Critical CSS inlined для быстрой отрисовки
+    document.addEventListener('DOMContentLoaded', function() {
+        // Предотвращаем FOUC (Flash of Unstyled Content)
+        document.body.style.opacity = '1';
+    });
+    </script>
+    
+    <!-- Deferred loading для некритичных скриптов -->
+    <script>
+    // Динамическая загрузка AOS
+    function loadAOS() {
+        if (typeof AOS === 'undefined') {
+            const script = document.createElement('script');
+            script.src = 'https://unpkg.com/aos@2.3.1/dist/aos.js';
+            script.onload = function() {
+                AOS.init({
+                    duration: 1000,
+                    once: true,
+                    offset: 100
+                });
+            };
+            document.head.appendChild(script);
+        }
+    }
+    
+    // Динамическая загрузка Vanilla Tilt (только для десктопа)
+    function loadVanillaTilt() {
+        if (window.innerWidth > 1024 && typeof VanillaTilt === 'undefined') {
+            const script = document.createElement('script');
+            script.src = 'https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js';
+            document.head.appendChild(script);
+        }
+    }
+    
+    // Загружаем после основной загрузки страницы
+    window.addEventListener('load', function() {
+        setTimeout(loadAOS, 500);
+        setTimeout(loadVanillaTilt, 1000);
+    });
+    </script>
+    
+    <!-- Основной скрипт с deferred loading -->
+    <script src="js/main-deferred.js" defer></script>
+    
+    <!-- Карусель как module (tree shaking) -->
+    
+    <!-- Структурированные данные -->
     <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -2078,8 +2124,6 @@ function downloadImage(imagePath, fileName) {
     link.click();
     document.body.removeChild(link);
 }
-
-// Carousel handled by OptimizedCarousel
 </script>
 </body>
 </html>

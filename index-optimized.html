@@ -1,0 +1,71 @@
+<!-- Оптимизированная загрузка скриптов для PageSpeed -->
+    <!-- Критически важные скрипты (немедленная загрузка) -->
+    <script>
+    // Critical CSS inlined для быстрой отрисовки
+    document.addEventListener('DOMContentLoaded', function() {
+        // Предотвращаем FOUC (Flash of Unstyled Content)
+        document.body.style.opacity = '1';
+    });
+    </script>
+    
+    <!-- Deferred loading для некритичных скриптов -->
+    <script>
+    // Динамическая загрузка AOS
+    function loadAOS() {
+        if (typeof AOS === 'undefined') {
+            const script = document.createElement('script');
+            script.src = 'https://unpkg.com/aos@2.3.1/dist/aos.js';
+            script.onload = function() {
+                AOS.init({
+                    duration: 1000,
+                    once: true,
+                    offset: 100
+                });
+            };
+            document.head.appendChild(script);
+        }
+    }
+    
+    // Динамическая загрузка Vanilla Tilt (только для десктопа)
+    function loadVanillaTilt() {
+        if (window.innerWidth > 1024 && typeof VanillaTilt === 'undefined') {
+            const script = document.createElement('script');
+            script.src = 'https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js';
+            document.head.appendChild(script);
+        }
+    }
+    
+    // Загружаем после основной загрузки страницы
+    window.addEventListener('load', function() {
+        setTimeout(loadAOS, 500);
+        setTimeout(loadVanillaTilt, 1000);
+    });
+    </script>
+    
+    <!-- Основной скрипт с deferred loading -->
+    <script src="js/main-deferred.js" defer></script>
+    
+    <!-- Карусель как module (tree shaking) -->
+    <script type="module" src="js/final-carousel.js"></script>
+    
+    <!-- Структурированные данные -->
+    <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "WebSite",
+ "name": "Amadeya",
+ "url": "https://amadeya.org",
+ "description": "Эзотерика, духовное развитие и энергетические практики"
+}
+</script>
+
+<script>
+function downloadImage(imagePath, fileName) {
+    const link = document.createElement('a');
+    link.href = imagePath;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+</script>
