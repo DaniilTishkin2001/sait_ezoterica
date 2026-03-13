@@ -1,0 +1,174 @@
+# ========================================
+# SERVER OPTIMIZATION FOR PERFORMANCE
+# Performance Score Target: > 90
+# ========================================
+
+# Enable Brotli compression (highest priority)
+<IfModule mod_brotli.c>
+    AddOutputFilterByType BROTLI_COMPRESS application/atom+xml
+    AddOutputFilterByType BROTLI_COMPRESS application/javascript
+    AddOutputFilterByType BROTLI_COMPRESS application/json
+    AddOutputFilterByType BROTLI_COMPRESS application/rss+xml
+    AddOutputFilterByType BROTLI_COMPRESS application/vnd.ms-fontobject
+    AddOutputFilterByType BROTLI_COMPRESS application/x-font-ttf
+    AddOutputFilterByType BROTLI_COMPRESS application/x-font-opentype
+    AddOutputFilterByType BROTLI_COMPRESS application/x-font-truetype
+    AddOutputFilterByType BROTLI_COMPRESS application/x-javascript
+    AddOutputFilterByType BROTLI_COMPRESS application/xhtml+xml
+    AddOutputFilterByType BROTLI_COMPRESS application/xml
+    AddOutputFilterByType BROTLI_COMPRESS font/opentype
+    AddOutputFilterByType BROTLI_COMPRESS font/otf
+    AddOutputFilterByType BROTLI_COMPRESS font/ttf
+    AddOutputFilterByType BROTLI_COMPRESS image/svg+xml
+    AddOutputFilterByType BROTLI_COMPRESS image/x-icon
+    AddOutputFilterByType BROTLI_COMPRESS text/css
+    AddOutputFilterByType BROTLI_COMPRESS text/html
+    AddOutputFilterByType BROTLI_COMPRESS text/javascript
+    AddOutputFilterByType BROTLI_COMPRESS text/plain
+    AddOutputFilterByType BROTLI_COMPRESS text/xml
+</IfModule>
+
+# Fallback to Gzip compression
+<IfModule mod_deflate.c>
+    # Enable compression for these types
+    AddOutputFilterByType DEFLATE application/atom+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+    AddOutputFilterByType DEFLATE application/x-font-ttf
+    AddOutputFilterByType DEFLATE application/x-font-opentype
+    AddOutputFilterByType DEFLATE application/x-font-truetype
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE font/opentype
+    AddOutputFilterByType DEFLATE font/otf
+    AddOutputFilterByType DEFLATE font/ttf
+    AddOutputFilterByType DEFLATE image/svg+xml
+    AddOutputFilterByType DEFLATE image/x-icon
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/xml
+</IfModule>
+
+# ========================================
+# LONG-TERM CACHING STRATEGY
+# ========================================
+
+<IfModule mod_expires.c>
+    ExpiresActive on
+    
+    # Images - 1 year cache (immutable)
+    <FilesMatch "\.(webp|avif|jpg|jpeg|png|gif|ico|svg)$">
+        ExpiresActive On
+        ExpiresDefault "access plus 1 year"
+        Header append Cache-Control "public, immutable"
+        Header append Vary Accept-Encoding
+    </FilesMatch>
+    
+    # Fonts - 1 year cache (immutable)
+    <FilesMatch "\.(woff2?|eot|ttf|otf)$">
+        ExpiresActive On
+        ExpiresDefault "access plus 1 year"
+        Header append Cache-Control "public, immutable"
+        Header append Vary Accept-Encoding
+    </FilesMatch>
+    
+    # CSS & JS - 1 year cache (immutable with hash)
+    <FilesMatch "\.(css|js)$">
+        ExpiresActive On
+        ExpiresDefault "access plus 1 year"
+        Header append Cache-Control "public, immutable"
+        Header append Vary Accept-Encoding
+    </FilesMatch>
+    
+    # HTML - Short cache for dynamic content
+    <FilesMatch "\.(html|htm)$">
+        ExpiresActive On
+        ExpiresDefault "access plus 1 hour"
+        Header append Cache-Control "public, must-revalidate"
+    </FilesMatch>
+</IfModule>
+
+# ========================================
+# SECURITY HEADERS
+# ========================================
+
+<IfModule mod_headers.c>
+    # HSTS
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    
+    # Prevent MIME type sniffing
+    Header always set X-Content-Type-Options "nosniff"
+    
+    # XSS Protection
+    Header always set X-XSS-Protection "1; mode=block"
+    
+    # Content Security Policy (optimized for performance)
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://mc.yandex.ru https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://mc.yandex.ru https://www.google-analytics.com;"
+    
+    # Referrer Policy
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Permissions Policy
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+    
+    # Performance headers
+    Header always set Connection "keep-alive"
+</IfModule>
+
+# ========================================
+# HTTP/2 SERVER PUSH
+# ========================================
+
+<IfModule mod_http2.c>
+    # Preload critical resources with HTTP/2 push
+    H2PushResource /css/style.css text/css
+    H2PushResource /fonts/optimized-fonts.css text/css
+    H2PushResource /img/5296603349773916432.webp image/webp
+</IfModule>
+
+# ========================================
+# PERFORMANCE OPTIMIZATIONS
+# ========================================
+
+# Enable connection keep-alive (moved inside mod_headers)
+# Compress output before sending
+SetOutputFilter DEFLATE
+
+# Set compression level
+SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip dont-vary
+SetEnvIfNoCase Request_URI \.(?:exe|t?gz|zip|bz2|sit|rar)$ no-gzip dont-vary
+
+# ========================================
+# ERROR PAGES (optimized)
+# ========================================
+
+ErrorDocument 404 /404.html
+ErrorDocument 500 /500.html
+
+# ========================================
+# REDIRECTS (SEO friendly)
+# ========================================
+
+# Force HTTPS
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Remove trailing slashes
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} (.+)/$
+RewriteRule ^ %1 [L,R=301]
+
+# ========================================
+# PREVENT HOTLINKING
+# ========================================
+
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^https?://(www\.)?amadeya\.org [NC]
+RewriteCond %{HTTP_REFERER} !^https?://(www\.)?google\. [NC]
+RewriteRule \.(webp|avif|jpe?g|png|gif|ico|svg)$ - [F,NC,L]
