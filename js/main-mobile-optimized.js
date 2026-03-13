@@ -259,7 +259,7 @@ function initLazyLoading() {
     }
 }
 
-// Мобильная карусель с touch-оптимизацией
+// Мобильная карусель с touch-оптимизацией (без forced layout)
 function initCarousel() {
     const carouselWrappers = document.querySelectorAll('.carousel-wrapper');
     
@@ -272,23 +272,36 @@ function initCarousel() {
         if (!track || items.length === 0) return;
         
         let currentIndex = 0;
-        const isMobile = window.innerWidth <= 767;
+        let isAnimating = false;
+        
+        // Кэшируем размеры для избежания forced layout
+        let cachedWrapperWidth = 0;
+        let itemWidth = 0;
+        
+        function updateDimensions() {
+            cachedWrapperWidth = wrapper.offsetWidth;
+            itemWidth = cachedWrapperWidth;
+        }
         
         function updateCarousel() {
+            if (isAnimating) return;
+            
             const width = window.innerWidth;
             const isMobile = width <= 767;
             const isTablet = width >= 768 && width <= 1024;
             
+            // Используем кэшированные размеры
+            if (cachedWrapperWidth === 0) updateDimensions();
+            
             if (isMobile) {
-                const itemWidth = wrapper.offsetWidth;
                 track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
                 if (prevBtn) prevBtn.style.display = currentIndex === 0 ? 'none' : 'flex';
                 if (nextBtn) nextBtn.style.display = currentIndex >= items.length - 1 ? 'none' : 'flex';
             } else if (isTablet) {
-                const itemWidth = wrapper.offsetWidth / 2 + 10;
+                const tabletItemWidth = itemWidth / 2 + 10;
                 const maxIndex = Math.max(0, items.length - 2);
                 currentIndex = Math.min(currentIndex, maxIndex);
-                track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+                track.style.transform = `translateX(-${currentIndex * tabletItemWidth}px)`;
                 if (prevBtn) prevBtn.style.display = currentIndex === 0 ? 'none' : 'flex';
                 if (nextBtn) nextBtn.style.display = currentIndex >= maxIndex ? 'none' : 'flex';
             } else {
@@ -300,12 +313,15 @@ function initCarousel() {
         
         // Touch-оптимизированные обработчики кнопок
         if (prevBtn) {
-            prevBtn.addEventListener('click', () => {
-                if (currentIndex > 0) {
+            prevBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (currentIndex > 0 && !isAnimating) {
+                    isAnimating = true;
                     currentIndex--;
                     updateCarousel();
+                    setTimeout(() => { isAnimating = false; }, 400);
                 }
-            }, { passive: true });
+            }, { passive: false });
             
             // Touch feedback
             prevBtn.addEventListener('touchstart', function() {
@@ -318,22 +334,28 @@ function initCarousel() {
         }
         
         if (nextBtn) {
-            nextBtn.addEventListener('click', () => {
+            nextBtn.addEventListener('click', (e) => {
+                e.preventDefault();
                 const width = window.innerWidth;
                 const isMobile = width <= 767;
                 const isTablet = width >= 768 && width <= 1024;
                 
-                if (isMobile && currentIndex < items.length - 1) {
-                    currentIndex++;
-                    updateCarousel();
-                } else if (isTablet) {
-                    const maxIndex = Math.max(0, items.length - 2);
-                    if (currentIndex < maxIndex) {
+                if (!isAnimating) {
+                    isAnimating = true;
+                    
+                    if (isMobile && currentIndex < items.length - 1) {
                         currentIndex++;
-                        updateCarousel();
+                    } else if (isTablet) {
+                        const maxIndex = Math.max(0, items.length - 2);
+                        if (currentIndex < maxIndex) {
+                            currentIndex++;
+                        }
                     }
+                    
+                    updateCarousel();
+                    setTimeout(() => { isAnimating = false; }, 400);
                 }
-            }, { passive: true });
+            }, { passive: false });
             
             // Touch feedback
             nextBtn.addEventListener('touchstart', function() {
@@ -346,7 +368,7 @@ function initCarousel() {
         }
         
         // Touch свайпы для мобильной карусели
-        if (isMobile) {
+        if (window.innerWidth <= 767) {
             let touchStartX = 0;
             let touchEndX = 0;
             let isDragging = false;
@@ -361,7 +383,6 @@ function initCarousel() {
                 if (!isDragging) return;
                 touchEndX = e.touches[0].clientX;
                 const diff = touchStartX - touchEndX;
-                const itemWidth = wrapper.offsetWidth;
                 const translateX = -currentIndex * itemWidth - diff * 0.3;
                 track.style.transform = `translateX(${translateX}px)`;
             }, { passive: true });
@@ -372,28 +393,37 @@ function initCarousel() {
                 track.style.transition = '';
                 
                 const diff = touchStartX - touchEndX;
-                const threshold = wrapper.offsetWidth * 0.3;
+                const threshold = itemWidth * 0.3;
                 
-                if (Math.abs(diff) > threshold) {
+                if (Math.abs(diff) > threshold && !isAnimating) {
+                    isAnimating = true;
+                    
                     if (diff > 0 && currentIndex < items.length - 1) {
                         currentIndex++;
                     } else if (diff < 0 && currentIndex > 0) {
                         currentIndex--;
                     }
+                    
+                    updateCarousel();
+                    setTimeout(() => { isAnimating = false; }, 400);
+                } else {
+                    updateCarousel();
                 }
-                
-                updateCarousel();
             }, { passive: true });
         }
         
-        // Оптимизированный resize handler
+        // Оптимизированный resize handler с debounce
         let resizeTimer;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(updateCarousel, 150);
+            resizeTimer = setTimeout(() => {
+                updateDimensions();
+                updateCarousel();
+            }, 150);
         }, { passive: true });
         
         // Инициализация
+        updateDimensions();
         updateCarousel();
     });
 }
