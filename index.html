@@ -59,6 +59,21 @@
     <link rel="preload" href="img/5296603349773916432.webp" as="image" importance="high">
     <link rel="preload" href="img/5296603349773916438.webp" as="image" importance="high">
     <link rel="preload" href="img/5296603349773916415.webp" as="image" importance="high">
+    <link rel="preload" href="img/5296603349773916465.webp" as="image" importance="high">
+    <link rel="preload" href="img/5296603349773916730.webp" as="image" importance="high">
+    <link rel="preload" href="img/5296603349773916837.webp" as="image" importance="high">
+    <link rel="preload" href="img/5296603349773916843.webp" as="image" importance="high">
+    <link rel="preload" href="img/5296603349773916758.webp" as="image" importance="high">
+    <link rel="preload" href="img/5298855149587602076.webp" as="image" importance="high">
+    <link rel="preload" href="img/5359580824602349004.webp" as="image" importance="high">
+    <link rel="preload" href="img/5359580824602349141.webp" as="image" importance="high">
+    
+    <!-- Carousel Images Preload -->
+    <link rel="preload" href="img/5296603349773916465.webp" as="image" importance="high">
+    <link rel="preload" href="img/5296603349773916730.webp" as="image" importance="high">
+    <link rel="preload" href="img/5359580824602349141.webp" as="image" importance="high">
+    <link rel="preload" href="img/5296603349773916868.webp" as="image" importance="high">
+    <link rel="preload" href="img/5296603349773916758.webp" as="image" importance="high">
     
     <!-- Font Preload -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
@@ -1168,7 +1183,12 @@
     <header class="header" role="banner">
         <nav class="nav" role="navigation">
             <div class="nav__logo">
-                <img src="img/5296603349773916388.webp" alt="Amadeya Logo" class="logo-icon">
+                <picture>
+                    <source srcset="img/5296603349773916388.webp" type="image/webp">
+                    <img src="img/5296603349773916388.webp" alt="Amadeya Logo" class="logo-icon" 
+                         fetchpriority="high" loading="eager"
+                         sizes="(max-width: 768px) 40px, 60px">
+                </picture>
             </div>
             <div class="nav__mobile-title">Амадея<br>центр саморазвития</div>
             <div class="nav__links">
@@ -1188,7 +1208,12 @@
                 </button>
                 <div class="mobile-dropdown" id="mobileDropdown">
                     <div class="mobile-dropdown-header">
-                        <img src="img/5296603349773916388.webp" alt="Amadeya Logo" class="logo-icon">
+                        <picture>
+                    <source srcset="img/5296603349773916388.webp" type="image/webp">
+                    <img src="img/5296603349773916388.webp" alt="Amadeya Logo" class="logo-icon" 
+                         fetchpriority="high" loading="eager"
+                         sizes="(max-width: 768px) 40px, 60px">
+                </picture>
                     </div>
                     <div class="mobile-dropdown-content">
                         <a href="#about" class="mobile-dropdown-link">О практике</a>
@@ -1271,21 +1296,42 @@
                 </div>
                 
                 <div class="about__grid">
-                    <article class="about__item" data-aos="fade-up" style="background-image: url('img/5296603349773916432.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                    <article class="about__item" data-aos="fade-up">
+                        <picture>
+                            <source srcset="img/5296603349773916432.webp" type="image/webp">
+                            <img src="img/5296603349773916432.webp" alt="Символический язык Таро" 
+                                 fetchpriority="high" loading="eager"
+                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;">
+                        </picture>
                         <div class="about__icon">✨</div>
                         <h3>Символический язык</h3>
                         <p>
                             Каждая карта — это ключ к пониманию глубинных процессов души и закономерностей вселенной.
                         </p>
                     </article>
-                    <article class="about__item" data-aos="fade-up" data-aos-delay="100" style="background-image: url('img/5296603349773916438.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                    <article class="about__item" data-aos="fade-up" data-aos-delay="100">
+                        <picture>
+                            <source srcset="img/5296603349773916438.webp" type="image/webp">
+                            <img src="img/5296603349773916438.webp" alt="Энергетическая связь с картами" 
+                                 fetchpriority="high" loading="eager"
+                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;">
+                        </picture>
                         <div class="about__icon">🌟</div>
                         <h3>Энергетическая связь</h3>
                         <p>
                             Научитесь чувствовать вибрации карт и устанавливать глубокую связь с колодой.
                         </p>
                     </article>
-                    <article class="about__item" data-aos="fade-up" data-aos-delay="200" style="background-image: url('img/5296603349773916415.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                    <article class="about__item" data-aos="fade-up" data-aos-delay="200">
+                        <picture>
+                            <source srcset="img/5296603349773916415.webp" type="image/webp">
+                            <img src="img/5296603349773916415.webp" alt="Интуитивное развитие" 
+                                 fetchpriority="high" loading="eager"
+                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;">
+                        </picture>
                         <div class="about__icon">💫</div>
                         <h3>Интуитивное развитие</h3>
                         <p>
@@ -1648,7 +1694,16 @@
                 
                 <div class="special-grid">
                     <div class="special-card" data-aos="fade-up">
-                        <div class="special-card__image" style="background-image: url('img/5296603349773916837.webp'); background-size: 100% auto; background-position: center; background-repeat: no-repeat; cursor: pointer;" onclick="downloadImage('img/5296603349773916837.webp', 'financial-abundance.jpg')" title="Нажмите чтобы скачать">
+                        <div class="special-card__image">
+                            <picture>
+                                <source srcset="img/5296603349773916837.webp" type="image/webp">
+                                <img src="img/5296603349773916837.webp" alt="Финансовое изобилие через Таро" 
+                                     fetchpriority="high" loading="eager"
+                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                     style="width: 100%; height: 100%; object-fit: cover; object-position: center; cursor: pointer;"
+                                     onclick="downloadImage('img/5296603349773916837.webp', 'financial-abundance.jpg')" 
+                                     title="Нажмите чтобы скачать">
+                            </picture>
                             <div class="special-card__overlay">
                             </div>
                         </div>
@@ -1667,7 +1722,16 @@
                     </div>
 
                     <div class="special-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="special-card__image" style="background-image: url('img/5296603349773916843.webp'); background-size: 100% auto; background-position: center; background-repeat: no-repeat; cursor: pointer;" onclick="downloadImage('img/5296603349773916843.webp', 'spiritual-transformation.jpg')" title="Нажмите чтобы скачать">
+                        <div class="special-card__image">
+                            <picture>
+                                <source srcset="img/5296603349773916843.webp" type="image/webp">
+                                <img src="img/5296603349773916843.webp" alt="Духовная трансформация через Таро" 
+                                     fetchpriority="high" loading="eager"
+                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                     style="width: 100%; height: 100%; object-fit: cover; object-position: center; cursor: pointer;"
+                                     onclick="downloadImage('img/5296603349773916843.webp', 'spiritual-transformation.jpg')" 
+                                     title="Нажмите чтобы скачать">
+                            </picture>
                             <div class="special-card__overlay">
                             </div>
                         </div>
@@ -1686,7 +1750,14 @@
                     </div>
 
                     <div class="special-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="special-card__image" style="background-image: url('img/5298855149587602076.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                        <div class="special-card__image">
+                            <picture>
+                                <source srcset="img/5298855149587602076.webp" type="image/webp">
+                                <img src="img/5298855149587602076.webp" alt="Освобождение от блоков через Таро" 
+                                     fetchpriority="high" loading="eager"
+                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                     style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
+                            </picture>
                             <div class="special-card__overlay">
                             </div>
                         </div>
@@ -1704,8 +1775,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
         <!-- Метафизический глосарий -->
         <section class="glossary" id="glossary">
@@ -1741,7 +1810,14 @@
                                     <div class="carousel-wrapper">
                                         <div class="special-grid carousel-track">
                                             <div class="special-card carousel-item" data-aos="fade-up">
-                                                <div class="special-card__image" style="background-image: url('img/5296603349773916465.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                                                <div class="special-card__image">
+                                                    <picture>
+                                                        <source srcset="img/5296603349773916465.webp" type="image/webp">
+                                                        <img src="img/5296603349773916465.webp" alt="Древо Сефирот - структура мироздания" 
+                                                             fetchpriority="high" loading="eager"
+                                                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                                             style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
+                                                    </picture>
                                                     <div class="special-card__overlay">
                                                     </div>
                                                 </div>
@@ -1757,7 +1833,14 @@
                                             </div>
                                             
                                             <div class="special-card carousel-item" data-aos="fade-up" data-aos-delay="100">
-                                                <div class="special-card__image" style="background-image: url('img/5296603349773916730.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                                                <div class="special-card__image">
+                                                    <picture>
+                                                        <source srcset="img/5296603349773916730.webp" type="image/webp">
+                                                        <img src="img/5296603349773916730.webp" alt="Чакра - энергетический центр" 
+                                                             fetchpriority="high" loading="eager"
+                                                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                                             style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
+                                                    </picture>
                                                     <div class="special-card__overlay">
                                                     </div>
                                                 </div>
@@ -1772,7 +1855,14 @@
                                             </div>
                                             
                                             <div class="special-card carousel-item" data-aos="fade-up" data-aos-delay="200">
-                                                <div class="special-card__image" style="background-image: url('img/5359580824602349141.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                                                <div class="special-card__image">
+                                                    <picture>
+                                                        <source srcset="img/5359580824602349141.webp" type="image/webp">
+                                                        <img src="img/5359580824602349141.webp" alt="Энергетический кокон человека" 
+                                                             fetchpriority="high" loading="eager"
+                                                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                                             style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
+                                                    </picture>
                                                     <div class="special-card__overlay">
                                                     </div>
                                                 </div>
@@ -1787,17 +1877,20 @@
                                             </div>
                                             
                                             <div class="special-card carousel-item" data-aos="fade-up" data-aos-delay="300">
-                                                <div class="special-card__image" style="background-image: url('img/5296603349773916868.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                                                <div class="special-card__image">
+                                                    <picture>
+                                                        <source srcset="img/5296603349773916868.webp" type="image/webp">
+                                                        <img src="img/5296603349773916868.webp" alt="4 касты - эволюция человека" 
+                                                             fetchpriority="high" loading="eager"
+                                                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                                             style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
+                                                    </picture>
                                                     <div class="special-card__overlay">
                                                     </div>
                                                 </div>
                                                 <div class="special-card__content">
                                                     <h3>4 касты</h3>
-                                                    <p>Маги различают 4 касты людей, представляющие собой ступени в индивидуальной эволюции человека.
-
-Нарабатывая в каждой жизни необходимые признаки человек, переходит из касты, в касту затрачивая на переход разное количество времени в зависимости от целей которые он в этой жизни реализует. 
-
-</p>
+                                                    <p>Маги различают 4 касты людей, представляющие собой ступени в индивидуальной эволюции человека. Нарабатывая в каждой жизни необходимые признаки человек, переходит из касты, в касту затрачивая на переход разное количество времени в зависимости от целей которые он в этой жизни реализует.</p>
                                                     <div class="special-card__tags">
                                                         <span>Каббала</span>
                                                         <span>Структура мироздания</span>
@@ -1806,7 +1899,14 @@
                                             </div>
                                             
                                             <div class="special-card carousel-item" data-aos="fade-up" data-aos-delay="400">
-                                                <div class="special-card__image" style="background-image: url('img/5296603349773916758.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                                                <div class="special-card__image">
+                                                    <picture>
+                                                        <source srcset="img/5296603349773916758.webp" type="image/webp">
+                                                        <img src="img/5296603349773916758.webp" alt="Точка сборки - восприятие мира" 
+                                                             fetchpriority="high" loading="eager"
+                                                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                                             style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
+                                                    </picture>
                                                     <div class="special-card__overlay">
                                                     </div>
                                                 </div>
@@ -1830,6 +1930,10 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <section class="process" id="process">
             <div class="container">
@@ -1925,7 +2029,12 @@
         <div class="container">
             <div class="footer__content">
                 <div class="footer__logo">
-                    <img src="img/5296603349773916388.webp" alt="Amadeya Logo" class="logo-icon">
+                    <picture>
+                    <source srcset="img/5296603349773916388.webp" type="image/webp">
+                    <img src="img/5296603349773916388.webp" alt="Amadeya Logo" class="logo-icon" 
+                         fetchpriority="high" loading="eager"
+                         sizes="(max-width: 768px) 40px, 60px">
+                </picture>
                     <span>Амадея</span>
                 </div>
                 <p class="footer__text">
@@ -1949,7 +2058,7 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
-    <script src="js/carousel-lazy.js"></script>
+    <script type="module" src="js/final-carousel.js"></script>
     <script type="module" src="js/main.js"></script>
     <script type="application/ld+json">
 {

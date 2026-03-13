@@ -47,11 +47,12 @@
     function calculateCardDimensions() {
         if (!track || items.length === 0) return;
         
-        // Фиксированная ширина карточек как на изображении
-        cardWidth = 320; // Фиксированная ширина 320px
-        gapWidth = 20; // Промежуток 20px
+        // Получаем реальную ширину контейнера
+        const containerWidth = track.parentElement.offsetWidth;
+        const totalGapWidth = gapWidth * (itemsPerView - 1);
+        cardWidth = (containerWidth - totalGapWidth) / itemsPerView;
         
-        console.log(`Ширина карточки: ${cardWidth}px, Промежуток: ${gapWidth}px`);
+        console.log(`Контейнер: ${containerWidth}px, Ширина карточки: ${cardWidth}px, Промежуток: ${gapWidth}px`);
     }
     
     function removeOnclickAttributes() {
