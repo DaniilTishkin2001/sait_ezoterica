@@ -10,11 +10,12 @@ export default defineConfig({
     sourcemap: false,
     minify: 'terser',
     target: 'es2015',
-    chunkSizeWarningLimit: 500, 
+    chunkSizeWarningLimit: 200, 
     cssCodeSplit: true,
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'index.html')
+        main: resolve(__dirname, 'index.html'),
+        critical: resolve(__dirname, 'css/critical.css')
       },
       output: {
         assetFileNames: (assetInfo) => {
@@ -35,10 +36,18 @@ export default defineConfig({
           constStatements: true
         },
         manualChunks: (id) => {
-          if (id.includes('carousel') || id.includes('scroll')) {
-            return 'carousel'
+          if (id.includes('virtual-carousel') || id.includes('image-optimizer')) {
+            return 'carousel-critical'
+          }
+          if (id.includes('scroll-performance')) {
+            return 'scroll'
+          }
+          if (id.includes('app')) {
+            return 'app'
           }
           if (id.includes('node_modules')) {
+            if (id.includes('aos')) return 'aos'
+            if (id.includes('vanilla-tilt')) return 'tilt'
             return 'vendor'
           }
         }
@@ -51,7 +60,7 @@ export default defineConfig({
         drop_console: true,
         drop_debugger: true,
         pure_funcs: ['console.log', 'console.info', 'console.debug', 'console.warn'],
-        passes: 2,
+        passes: 4, 
         dead_code: true,
         conditionals: true,
         evaluate: true,
@@ -64,18 +73,35 @@ export default defineConfig({
         collapse_vars: true,
         reduce_vars: true,
         switches: true,
-        typeofs: true
+        typeofs: true,
+        side_effects: false,
+        inline: 2,
+        keep_infinity: true,
+        reduce_funcs: true,
+        sequences: true,
+        module: true,
+        toplevel: true,
+        global_defs: {
+          DEBUG: false,
+          VERSION: '"production"'
+        }
       },
       mangle: {
         safari10: true,
         properties: {
           regex: /^_/
-        }
+        },
+        toplevel: true,
+        reserved: []
       },
       format: {
-        comments: false
+        comments: true,
+        ecma: 2015,
+        preamble: '/* Optimized for performance */'
       }
-    }
+    },
+    reportCompressedSize: true,
+    chunkSizeWarningLimit: 150
   },
   server: {
     port: 3000,
@@ -84,25 +110,50 @@ export default defineConfig({
     host: true,
     hmr: {
       overlay: false
+    },
+    headers: {
+      'Cache-Control': 'no-cache',
+      'X-Content-Type-Options': 'nosniff'
     }
   },
   preview: {
     port: 4173,
     open: true,
-    host: true
+    host: true,
+    headers: {
+      'Cache-Control': 'public, max-age=31536000',
+      'X-Content-Type-Options': 'nosniff'
+    }
   },
   optimizeDeps: {
     include: ['aos', 'vanilla-tilt'],
-    exclude: []
+    exclude: ['final-carousel', 'simple-carousel', 'optimized-carousel']
   },
   css: {
     devSourcemap: false,
     preprocessorOptions: {},
     modules: false,
     postcss: {
-      plugins: [
-      ]
+      plugins: []
+    },
+    lightningcss: {
+      targets: {
+        browsers: ['> 0.5%', 'last 2 versions', 'not dead']
+      }
     }
   },
-  assetsInclude: ['**/*.webp', '**/*.avif']
+  assetsInclude: ['**/*.webp', '**/*.avif'],
+  experimental: {
+    renderBuiltUrl: (filename, { hostType }) => {
+      if (hostType === 'js') {
+        return { js: `new URL(${filename}, import.meta.url).href` }
+      } else {
+        return { relative: true }
+      }
+    }
+  },
+  define: {
+    __VUE_OPTIONS_API__: false,
+    __VUE_PROD_DEVTOOLS__: false
+  }
 })

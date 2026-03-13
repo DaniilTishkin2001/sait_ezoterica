@@ -1,0 +1,284 @@
+/* Critical CSS for Above-the-Fold Content - Inlined for FCP */
+
+/* Header & Hero Section */
+.development-center {
+    background: linear-gradient(135deg, rgba(120, 119, 198, 0.1) 0%, rgba(168, 167, 255, 0.1) 100%);
+    backdrop-filter: blur(20px);
+    padding: 60px 0;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.development-center__content {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.development-center__title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: #ffffff;
+    text-shadow: 
+        0 0 20px rgba(120, 119, 198, 0.8),
+        0 0 40px rgba(120, 119, 198, 0.6),
+        0 0 60px rgba(120, 119, 198, 0.4);
+    margin-bottom: 20px;
+    line-height: 1.2;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, #ffffff 0%, #f0f0ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: titleGlow 3s ease-in-out infinite alternate;
+    white-space: nowrap;
+    display: inline-block;
+    text-transform: uppercase;
+    font-family: 'Playfair Display', serif;
+}
+
+@keyframes titleGlow {
+    0% { filter: brightness(1) drop-shadow(0 0 20px rgba(120, 119, 198, 0.3)); }
+    100% { filter: brightness(1.2) drop-shadow(0 0 30px rgba(168, 167, 255, 0.4)); }
+}
+
+/* Base Layout */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0a0a0a;
+    color: #ffffff;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Loading States */
+.loading {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.loaded {
+    opacity: 1;
+}
+
+/* Prevent Layout Shift */
+img, video, iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Carousel Critical Styles */
+.glossary-carousel {
+    position: relative;
+    overflow: hidden;
+    padding: 30px 0;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.carousel-wrapper {
+    flex: 1;
+    overflow: hidden;
+    border-radius: 20px;
+    min-height: 400px;
+}
+
+.carousel-track {
+    display: flex;
+    height: 100%;
+    gap: 20px;
+    will-change: transform;
+}
+
+.carousel-item {
+    flex: 0 0 calc(33.333% - 14px);
+    min-width: 0;
+    height: 100%;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.special-card {
+    width: 100%;
+    height: 100%;
+    min-height: 350px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.special-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(120, 119, 198, 0.3);
+}
+
+.special-card__image {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: #f0f0f0;
+    aspect-ratio: 16/9;
+}
+
+.special-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.special-card:hover .special-card__image img {
+    transform: scale(1.05);
+}
+
+.special-card__content {
+    padding: 20px;
+}
+
+.special-card__content h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.special-card__content p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 15px;
+}
+
+/* Button Styles */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(135deg, rgba(120, 119, 198, 0.95), rgba(168, 167, 255, 0.95));
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(120, 119, 198, 0.3);
+}
+
+.carousel-btn:hover {
+    background: linear-gradient(135deg, rgba(120, 119, 198, 1), rgba(168, 167, 255, 1));
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 30px rgba(120, 119, 198, 0.5);
+}
+
+.carousel-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.carousel-btn-prev {
+    left: 10px;
+}
+
+.carousel-btn-next {
+    right: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .carousel-item {
+        flex: 0 0 calc(50% - 10px);
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-item {
+        flex: 0 0 100%;
+    }
+    
+    .carousel-btn {
+        width: 44px;
+        height: 44px;
+    }
+    
+    .carousel-btn-prev {
+        left: 5px;
+    }
+    
+    .carousel-btn-next {
+        right: 5px;
+    }
+}
+
+/* Performance Optimizations */
+.carousel-track {
+    contain: layout style paint;
+}
+
+.special-card {
+    contain: layout style paint;
+}
+
+.special-card__image {
+    contain: layout style paint;
+}
+
+/* Accessibility */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Focus Styles */
+.carousel-btn:focus {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+}
