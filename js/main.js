@@ -69,6 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
     window.telegramButtonScroller = new TelegramButtonScroller();
 });
 
+// Unified Scroll Handler - see scroll-optimizer.js
+
 // Performance Optimizations - Universal Speed System
 class PerformanceOptimizer {
     constructor() {
@@ -161,40 +163,6 @@ class PerformanceOptimizer {
 
             animatedElements.forEach(el => animationObserver.observe(el));
         }
-    }
-
-    // Scroll Performance Optimization
-    setupScrollOptimization() {
-        let ticking = false;
-        let scrollTimeout;
-
-        function updateScrollPosition() {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        }
-
-        // Passive scroll listeners
-        window.addEventListener('scroll', updateScrollPosition, { passive: true });
-
-        // Debounced scroll events
-        window.addEventListener('scroll', () => {
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => {
-                // Handle scroll-dependent animations
-                document.querySelectorAll('[data-scroll]').forEach(el => {
-                    const rect = el.getBoundingClientRect();
-                    if (rect.top < window.innerHeight && rect.bottom > 0) {
-                        el.classList.add('in-view');
-                    } else {
-                        el.classList.remove('in-view');
-                    }
-                });
-            }, 100);
-        }, { passive: true });
     }
 
     // Image Optimization
@@ -337,7 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.performanceOptimizer = new PerformanceOptimizer();
 });
 
-// Mobile & Tablet Carousel Fix - Correct Cards Display
+// Carousel handled by OptimizedCarousel
 document.addEventListener('DOMContentLoaded', function() {
     const carouselWrappers = document.querySelectorAll('.carousel-wrapper');
     
@@ -735,20 +703,12 @@ function showImageOptions(e, image) {
 }
 
 // Download image
-function downloadImage(image) {
+function downloadImage(src, alt) {
     const link = document.createElement('a');
-    link.href = image.src;
-    link.download = image.src.split('/').pop();
+    link.href = src;
+    link.download = alt;
     link.click();
 }
-
-// Copy image link
-function copyImageLink(image) {
-    navigator.clipboard.writeText(image.src).then(() => {
-        showNotification('Ссылка скопирована!');
-    });
-}
-
 // Show notification
 function showNotification(message) {
     const notification = document.createElement('div');
@@ -862,13 +822,7 @@ AOS.init({
     offset: 100
 });
 
-// Initialize Vanilla Tilt
-VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
-    max: 15,
-    speed: 400,
-    glare: true,
-    "max-glare": 0.3
-});
+// Vanilla Tilt disabled for performance
 
 // Smooth scroll function
 function scrollToSection(sectionId) {
@@ -878,63 +832,9 @@ function scrollToSection(sectionId) {
     }
 }
 
-// Header scroll effect removed to maintain consistent styles
+// Parallax and navigation handled by UnifiedScrollHandler
 
-// Parallax effect for hero cards
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const cards = document.querySelectorAll('.card');
-    
-    cards.forEach((card, index) => {
-        const speed = 0.5 + (index * 0.1);
-        const yPos = -(scrolled * speed);
-        card.style.transform = `translateY(${yPos}px)`;
-    });
-});
-
-// Active navigation link
-window.addEventListener('scroll', () => {
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav__link');
-    
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (pageYOffset >= (sectionTop - 200)) {
-            current = section.getAttribute('id');
-        }
-    });
-    
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-        }
-    });
-});
-
-// Button ripple effect
-document.querySelectorAll('.btn').forEach(button => {
-    button.addEventListener('click', function(e) {
-        const ripple = document.createElement('span');
-        const rect = this.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        const x = e.clientX - rect.left - size / 2;
-        const y = e.clientY - rect.top - size / 2;
-        
-        ripple.style.width = ripple.style.height = size + 'px';
-        ripple.style.left = x + 'px';
-        ripple.style.top = y + 'px';
-        ripple.classList.add('ripple');
-        
-        this.appendChild(ripple);
-        
-        setTimeout(() => {
-            ripple.remove();
-        }, 600);
-    });
-});
+// Button ripple handled by UltimatePerformanceOptimizer
 
 // Add ripple styles
 const rippleStyles = document.createElement('style');
@@ -970,16 +870,7 @@ rippleStyles.textContent = `
 `;
 document.head.appendChild(rippleStyles);
 
-// Card flip animation on hover
-document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('mouseenter', () => {
-        card.style.transform = 'rotateY(180deg)';
-    });
-    
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = 'rotateY(0deg)';
-    });
-});
+// Card interactions handled by UltimatePerformanceOptimizer
 
 // Counter animation for stats (if any)
 function animateCounter(element, target, duration = 2000) {
@@ -1147,23 +1038,7 @@ fadeInUpStyles.textContent = `
 `;
 document.head.appendChild(fadeInUpStyles);
 
-// Mouse move parallax for hero section
-document.addEventListener('mousemove', (e) => {
-    const hero = document.querySelector('.hero');
-    if (!hero) return;
-    
-    const mouseX = e.clientX / window.innerWidth;
-    const mouseY = e.clientY / window.innerHeight;
-    
-    const cards = document.querySelectorAll('.card');
-    cards.forEach((card, index) => {
-        const speed = (index + 1) * 10;
-        const x = (mouseX - 0.5) * speed;
-        const y = (mouseY - 0.5) * speed;
-        
-        card.style.transform = `translate(${x}px, ${y}px)`;
-    });
-});
+// Mouse parallax handled by UltimatePerformanceOptimizer
 
 // Touch device detection
 const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
@@ -1181,416 +1056,36 @@ touchStyles.textContent = `
     .touch-device .about__item:hover,
     .touch-device .program-card:hover,
     .touch-device .special-card:hover {
-        transform: none !important;
-    }
 `;
 document.head.appendChild(touchStyles);
 
-// Performance optimization - debounce scroll events
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// Apply debounce to scroll events
-const debouncedScroll = debounce(() => {
-    // Scroll-related animations
-}, 10);
-
-window.addEventListener('scroll', debouncedScroll);
+// Debounced scroll handled by UnifiedScrollHandler
 
 // Add loading state for external links
 document.querySelectorAll('a[href^="http"]').forEach(link => {
     link.addEventListener('click', (e) => {
         // Add loading state
-        link.style.opacity = '0.7';
+        e.preventDefault();
+        const linkUrl = link.href;
+        const linkText = link.textContent;
+        const linkTarget = link.target;
         link.style.pointerEvents = 'none';
         
         // Reset after a short delay
         setTimeout(() => {
             link.style.opacity = '1';
             link.style.pointerEvents = 'auto';
-        }, 1000);
+        }, 2000);
     });
 });
 
-// Image download and open in new tab functionality
-function setupImageInteractions() {
-    // Add download and open in new tab functionality to all images
-    const allImages = document.querySelectorAll('img');
-    
-    allImages.forEach(img => {
-        // Make image clickable
-        img.style.cursor = 'pointer';
-        img.title = 'Кликните, чтобы открыть в новой вкладке. Правый клик для опций.';
-        
-        // Add click event
-        img.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const imgSrc = this.src;
-            
-            // Regular click: Open in new tab
-            window.open(imgSrc, '_blank');
-        });
-        
-        // Add right-click context menu for options
-        img.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-            const imgSrc = this.src;
-            const imgAlt = this.alt || 'Изображение';
-            showImageOptions(imgSrc, imgAlt, e.pageX, e.pageY);
-        });
-    });
+
+
+
+
+function copyImageLink(image) {
+    // Copy image link to clipboard
+    const link = image.src;
+    navigator.clipboard.writeText(link);
+    console.log('✨ Амадея сайт загружен успешно!');
 }
-
-function downloadImage(src, alt) {
-    // Create a temporary link element for download
-    const link = document.createElement('a');
-    link.href = src;
-    link.download = alt + '.jpg';
-    link.style.display = 'none';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-}
-
-function showImageOptions(src, alt, x, y) {
-    // Remove existing options menu if any
-    const existingMenu = document.querySelector('.image-options-menu');
-    if (existingMenu) {
-        existingMenu.remove();
-    }
-    
-    // Create options menu
-    const menu = document.createElement('div');
-    menu.className = 'image-options-menu';
-    menu.innerHTML = `
-        <div class="image-options-item" data-action="open">
-            <span class="option-icon">🔗</span>
-            <span>Открыть в новой вкладке</span>
-        </div>
-        <div class="image-options-item" data-action="download">
-            <span class="option-icon">⬇️</span>
-            <span>Скачать изображение</span>
-        </div>
-        <div class="image-options-item" data-action="copy">
-            <span class="option-icon">📋</span>
-            <span>Копировать ссылку</span>
-        </div>
-    `;
-    
-    // Position menu
-    menu.style.left = x + 'px';
-    menu.style.top = y + 'px';
-    
-    // Add to page
-    document.body.appendChild(menu);
-    
-    // Handle menu item clicks
-    menu.querySelectorAll('.image-options-item').forEach(item => {
-        item.addEventListener('click', function() {
-            const action = this.dataset.action;
-            
-            switch(action) {
-                case 'open':
-                    window.open(src, '_blank');
-                    break;
-                case 'download':
-                    downloadImage(src, alt);
-                    break;
-                case 'copy':
-                    copyToClipboard(src);
-                    showNotification('Ссылка скопирована в буфер обмена');
-                    break;
-            }
-            
-            menu.remove();
-        });
-    });
-    
-    // Close menu when clicking outside
-    setTimeout(() => {
-        document.addEventListener('click', function closeMenu(e) {
-            if (!menu.contains(e.target)) {
-                menu.remove();
-                document.removeEventListener('click', closeMenu);
-            }
-        });
-    }, 100);
-}
-
-function copyToClipboard(text) {
-    if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(text);
-    } else {
-        // Fallback for older browsers
-        const textArea = document.createElement('textarea');
-        textArea.value = text;
-        textArea.style.position = 'fixed';
-        textArea.style.left = '-999999px';
-        textArea.style.top = '-999999px';
-        document.body.appendChild(textArea);
-        textArea.focus();
-        textArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textArea);
-    }
-}
-
-function showNotification(message) {
-    // Create notification element
-    const notification = document.createElement('div');
-    notification.className = 'image-notification';
-    notification.textContent = message;
-    
-    // Add to page
-    document.body.appendChild(notification);
-    
-    // Remove after 3 seconds
-    setTimeout(() => {
-        notification.remove();
-    }, 3000);
-}
-
-// Initialize image interactions when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    setupImageInteractions();
-    
-    // Add structured data breadcrumbs
-    addBreadcrumbsStructuredData();
-    
-    // Setup active navigation highlighting
-    setupActiveNavigation();
-});
-
-// Navigation scroll effect removed to maintain consistent header styles
-
-// Active navigation highlighting
-function setupActiveNavigation() {
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav__link');
-    
-    if (!sections.length || !navLinks.length) return;
-    
-    function updateActiveLink() {
-        const scrollY = window.scrollY + 100;
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute('id');
-            
-            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${sectionId}`) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        });
-    }
-    
-    // Update on scroll
-    window.addEventListener('scroll', updateActiveLink);
-    
-    // Update on load
-    updateActiveLink();
-    
-    // Smooth scroll for navigation links
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            const targetId = link.getAttribute('href');
-            if (targetId.startsWith('#')) {
-                e.preventDefault();
-                const targetSection = document.querySelector(targetId);
-                if (targetSection) {
-                    const offsetTop = targetSection.offsetTop - 100;
-                    window.scrollTo({
-                        top: offsetTop,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    const mobileMenu = document.querySelector('.nav__menu');
-                    const mobileOverlay = document.querySelector('.mobile-menu-overlay');
-                    const mobileBtn = document.querySelector('.mobile-menu-btn');
-                    
-                    if (mobileMenu && mobileMenu.classList.contains('active')) {
-                        mobileMenu.classList.remove('active');
-                        mobileOverlay.classList.remove('active');
-                        mobileBtn.classList.remove('active');
-                    }
-                }
-            }
-        });
-    });
-}
-
-// Add breadcrumbs structured data
-function addBreadcrumbsStructuredData() {
-    const breadcrumbsData = {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-            {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Главная",
-                "item": "https://username.github.io/image/"
-            }
-        ]
-    };
-    
-    // Add current page to breadcrumbs
-    const currentHash = window.location.hash || '#hero';
-    const pageNames = {
-        '#hero': 'Главная',
-        '#about': 'О практике',
-        '#programs': 'Программы',
-        '#study-plan': 'План занятий',
-        '#special-programs': 'Дополнительные практики',
-        '#glossary': 'Метафизический глосарий',
-        '#process': 'Процесс',
-        '#contact': 'Контакты'
-    };
-    
-    if (currentHash && pageNames[currentHash]) {
-        breadcrumbsData.itemListElement.push({
-            "@type": "ListItem",
-            "position": 2,
-            "name": pageNames[currentHash],
-            "item": `https://username.github.io/image/${currentHash}`
-        });
-    }
-    
-    // Create script element
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(breadcrumbsData);
-    document.head.appendChild(script);
-}
-
-// Add FAQ structured data for glossary
-function addFAQStructuredData() {
-    const faqData = {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "Что такое Древо Сефирот?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Древо Сефирот описывает структуру мира, сознание Земли и человеческий разум через систему из десяти сефир, расположенных ярусами и связанных между собой каналами."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Что такое чакра?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Чакра (санскр. «Колесо») – энергетический центр на коконе человека. Чакры существуют в определенном частотном диапазоне и представляют определенный слой реальности."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Что такое точка сборки?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Точка сборки – термин из книг Карлоса Кастанеда, обозначающий режим восприятия окружающего мира. Она определяет уровень реальности, доступный для сознания."
-                }
-            }
-        ]
-    };
-    
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(faqData);
-    document.head.appendChild(script);
-}
-
-// Add FAQ structured data when glossary is visible
-const faqObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            addFAQStructuredData();
-            faqObserver.disconnect();
-        }
-    });
-});
-
-const glossarySection = document.querySelector('#glossary');
-if (glossarySection) {
-    faqObserver.observe(glossarySection);
-}
-
-// Telegram Floating Button Scroll Animation
-document.addEventListener('DOMContentLoaded', function() {
-    const telegramBtn = document.querySelector('.telegram-float-btn');
-    
-    if (telegramBtn) {
-        // Show/hide button based on scroll position
-        function handleScroll() {
-            const scrollY = window.scrollY;
-            const windowHeight = window.innerHeight;
-            const documentHeight = document.documentElement.scrollHeight;
-            const scrollThreshold = 300;
-            
-            // Показываем кнопку после скролла от threshold
-            if (scrollY > scrollThreshold) {
-                telegramBtn.classList.add('visible');
-                
-                // Рассчитываем позицию кнопки в зависимости от скролла
-                const maxScroll = documentHeight - windowHeight - scrollThreshold;
-                const currentScroll = scrollY - scrollThreshold;
-                const scrollProgress = Math.min(currentScroll / maxScroll, 1);
-                
-                // Плавное перемещение от центра к низу
-                const topPosition = 50 + (scrollProgress * 40); // От 50% до 90% (50% + 40%)
-                telegramBtn.style.top = topPosition + '%';
-                
-            } else {
-                telegramBtn.classList.remove('visible');
-                // Сбрасываем позицию при скрытии
-                telegramBtn.style.top = '50%';
-            }
-        }
-        
-        // Add scroll event listener with throttling
-        let scrollTimeout;
-        window.addEventListener('scroll', function() {
-            if (scrollTimeout) {
-                window.cancelAnimationFrame(scrollTimeout);
-            }
-            scrollTimeout = window.requestAnimationFrame(handleScroll);
-        });
-        
-        // Initial check
-        handleScroll();
-        
-        // Add smooth click animation
-        telegramBtn.addEventListener('click', function(e) {
-            // Add pulse effect on click
-            telegramBtn.style.transform = 'scale(0.9)';
-            setTimeout(() => {
-                telegramBtn.style.transform = '';
-            }, 150);
-        });
-        
-        // Handle window resize
-        window.addEventListener('resize', function() {
-            handleScroll();
-        });
-    }
-});
-
-console.log('✨ Амадея сайт загружен успешно!');

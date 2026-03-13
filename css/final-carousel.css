@@ -1,0 +1,171 @@
+/* ИСПРАВЛЕННАЯ АДАПТИВНАЯ КАРУСЕЛЬ */
+.glossary-carousel {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 60px; /* Отступы для кнопок */
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    gap: 20px;
+}
+
+.carousel-item {
+    flex: 0 0 calc(33.333% - 14px); /* Desktop: 3 карточки */
+    min-width: 0;
+    transition: all 0.3s ease;
+}
+
+/* Mobile: 1 карточка */
+@media (max-width: 767px) {
+    .glossary-carousel {
+        padding: 20px 50px; /* Меньше отступы для мобильных */
+    }
+    .carousel-item {
+        flex: 0 0 100% !important;
+    }
+}
+
+/* Tablet: 2 карточки */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .glossary-carousel {
+        padding: 20px 55px;
+    }
+    .carousel-item {
+        flex: 0 0 calc(50% - 10px) !important;
+    }
+}
+
+/* Desktop: 3 карточки */
+@media (min-width: 1024px) {
+    .glossary-carousel {
+        padding: 20px 60px;
+    }
+    .carousel-item {
+        flex: 0 0 calc(33.333% - 14px) !important;
+    }
+}
+
+/* Улучшенные кнопки */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(135deg, rgba(120, 119, 198, 0.95), rgba(168, 167, 255, 0.95));
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(120, 119, 198, 0.3);
+}
+
+.carousel-btn:hover {
+    background: linear-gradient(135deg, rgba(120, 119, 198, 1), rgba(168, 167, 255, 1));
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 30px rgba(120, 119, 198, 0.5);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.carousel-btn:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-btn svg {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.2s ease;
+}
+
+.carousel-btn:hover svg {
+    transform: scale(1.1);
+}
+
+.carousel-btn-prev {
+    left: 10px;
+}
+
+.carousel-btn-next {
+    right: 10px;
+}
+
+/* Mobile кнопки */
+@media (max-width: 767px) {
+    .carousel-btn {
+        width: 44px;
+        height: 44px;
+        border-width: 1.5px;
+    }
+    .carousel-btn svg {
+        width: 20px;
+        height: 20px;
+    }
+    .carousel-btn-prev {
+        left: 5px;
+    }
+    .carousel-btn-next {
+        right: 5px;
+    }
+}
+
+/* Tablet кнопки */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .carousel-btn {
+        width: 48px;
+        height: 48px;
+    }
+    .carousel-btn svg {
+        width: 22px;
+        height: 22px;
+    }
+    .carousel-btn-prev {
+        left: 8px;
+    }
+    .carousel-btn-next {
+        right: 8px;
+    }
+}
+
+/* Desktop кнопки */
+@media (min-width: 1024px) {
+    .carousel-btn {
+        width: 50px;
+        height: 50px;
+    }
+    .carousel-btn svg {
+        width: 24px;
+        height: 24px;
+    }
+    .carousel-btn-prev {
+        left: 10px;
+    }
+    .carousel-btn-next {
+        right: 10px;
+    }
+}
+
+/* Анимация появления */
+.carousel-btn {
+    animation: btnAppear 0.5s ease;
+}
+
+@keyframes btnAppear {
+    from {
+        opacity: 0;
+        transform: translateY(-50%) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(-50%) scale(1);
+    }
+}

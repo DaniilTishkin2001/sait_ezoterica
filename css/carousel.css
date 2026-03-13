@@ -1,0 +1,133 @@
+/* Optimized Carousel Styles */
+.carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    width: 100%;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+    width: 100%;
+}
+
+.carousel-item {
+    flex: 0 0 33.333%; /* Default: 3 элемента для desktop */
+    padding: 0 8px;
+    box-sizing: border-box;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    will-change: opacity, transform;
+    min-width: 0; /* Предотвращает растягение */
+}
+
+.carousel-item:not(.active) {
+    opacity: 0.7;
+    transform: scale(0.95);
+}
+
+.carousel-item.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(120, 119, 198, 0.9);
+    color: white;
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+}
+
+.carousel-btn:hover {
+    background: rgba(120, 119, 198, 1);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-btn-prev {
+    left: 16px;
+}
+
+.carousel-btn-next {
+    right: 16px;
+}
+
+/* Mobile: 1 элемент */
+@media (max-width: 768px) {
+    .carousel-item {
+        flex: 0 0 100% !important;
+        padding: 0 4px;
+    }
+
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .carousel-btn-prev {
+        left: 8px;
+    }
+
+    .carousel-btn-next {
+        right: 8px;
+    }
+}
+
+/* Tablet: 2 элемента */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .carousel-item {
+        flex: 0 0 50% !important;
+        padding: 0 6px;
+    }
+
+    .carousel-btn {
+        width: 44px;
+        height: 44px;
+    }
+}
+
+/* Desktop/Notebook: 3 элемента */
+@media (min-width: 1025px) {
+    .carousel-item {
+        flex: 0 0 33.333% !important;
+        padding: 0 8px;
+    }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .carousel-track,
+    .carousel-item,
+    .carousel-btn {
+        transition: none !important;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .carousel-btn {
+        width: 44px;
+        height: 44px;
+    }
+}
+
+/* Hide buttons when at boundaries */
+.carousel-btn.hidden {
+    display: none;
+}
