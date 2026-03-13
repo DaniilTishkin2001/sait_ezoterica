@@ -126,6 +126,11 @@
     <!-- Манифест для PWA -->
     <link rel="manifest" href="site.webmanifest">
     
+    <!-- Предзагрузка критических изображений -->
+    <link rel="preload" href="img/5296603349773916465.jpg" as="image">
+    <link rel="preload" href="img/5296603349773916730.jpg" as="image">
+    <link rel="preload" href="img/5296603349773916388.jpg" as="image">
+    
     <!-- Предзагрузка шрифтов -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -134,7 +139,7 @@
     <!-- Предзагрузка критических стилей -->
     <link rel="preload" href="css/style.css" as="style">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/final-carousel.css">
+    <link rel="stylesheet" href="css/carousel-lazy.css">
     
     <style>
         .about__item {
@@ -1944,9 +1949,7 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
-    <script src="js/scroll-optimizer.js"></script>
-    <script src="js/ultimate-optimizer.js"></script>
-    <script src="js/simple-working-carousel.js"></script>
+    <script src="js/carousel-lazy.js"></script>
     <script type="module" src="js/main.js"></script>
     <script type="application/ld+json">
 {
