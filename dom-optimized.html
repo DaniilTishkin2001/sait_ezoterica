@@ -1,0 +1,95 @@
+<!-- DOM Optimized Structure - Reduced nodes, removed unnecessary wrappers -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amadeya — эзотерика и духовные практики</title>
+    
+    <!-- Critical CSS inlined -->
+    <style>
+        *{box-sizing:border-box;margin:0;padding:0}
+        html{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+        body{background:#0a0a0a;color:#fff;opacity:0;transition:opacity .3s}
+        .loaded{opacity:1}
+        .header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(120,119,198,0.95);backdrop-filter:blur(10px);padding:1rem 0}
+        .header__container{max-width:1200px;margin:0 auto;padding:0 1rem;display:flex;justify-content:space-between;align-items:center}
+        .logo{font-size:1.5rem;font-weight:700;color:#fff;text-decoration:none}
+        .nav{display:flex;gap:2rem}
+        .nav__link{color:#fff;text-decoration:none;transition:color .3s}
+        .nav__link:hover{color:#a8a7ff}
+        .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem 1rem;background:linear-gradient(135deg,rgba(120,119,198,0.1),rgba(168,167,255,0.1))}
+        .hero__content{text-align:center;max-width:800px}
+        .hero__title{font-size:clamp(2rem,5vw,4rem);font-weight:800;margin-bottom:1.5rem;background:linear-gradient(135deg,#fff,#f0f0ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .hero__subtitle{font-size:clamp(1rem,2.5vw,1.5rem);margin-bottom:2rem;color:#a8a7ff}
+        .btn{display:inline-block;padding:1rem 2rem;background:linear-gradient(135deg,#7877c6,#a8a7ff);color:#fff;text-decoration:none;border-radius:8px;font-weight:600;transition:transform .3s,box-shadow .3s;min-height:44px;min-width:44px}
+        .btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(120,119,198,0.3)}
+        .mobile-menu-btn{display:none;background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer}
+        @media (max-width:768px){.mobile-menu-btn{display:block}.nav{display:none}}
+    </style>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="fonts/optimized-fonts.css" as="style">
+    <link rel="preload" href="img/hero-image.webp" as="image" width="600" height="600">
+    
+    <!-- Fonts with font-display: swap -->
+    <link rel="stylesheet" href="fonts/optimized-fonts.css">
+</head>
+<body>
+    <!-- Simplified header - removed unnecessary wrappers -->
+    <header class="header">
+        <div class="header__container">
+            <a href="#" class="logo">Амадея</a>
+            <nav class="nav">
+                <a href="#about" class="nav__link">О школе</a>
+                <a href="#programs" class="nav__link">Программы</a>
+                <a href="#contact" class="nav__link">Контакты</a>
+            </nav>
+            <button class="mobile-menu-btn" aria-label="Меню">☰</button>
+        </div>
+    </header>
+
+    <!-- Hero section - LCP element optimized -->
+    <main>
+        <section class="hero">
+            <div class="hero__content">
+                <h1 class="hero__title">Обучение Таро с Амадеей</h1>
+                <p class="hero__subtitle">Откройте древнюю мудрость карт для духовного развития</p>
+                <a href="#contact" class="btn">Начать обучение</a>
+            </div>
+        </section>
+        
+        <!-- Other sections would be loaded lazily -->
+    </main>
+
+    <!-- Optimized script loading -->
+    <script>
+        // Critical functionality only
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.add('loaded');
+            
+            // Mobile menu
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            const nav = document.querySelector('.nav');
+            
+            if (menuBtn && nav) {
+                menuBtn.addEventListener('click', () => {
+                    nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+                }, { passive: true });
+            }
+        });
+    </script>
+    
+    <!-- Deferred loading for non-critical scripts -->
+    <script src="js/performance-optimized.js" defer></script>
+    
+    <!-- Load CSS asynchronously -->
+    <script>
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'css/style.css';
+        document.head.appendChild(link);
+    </script>
+</body>
+</html>

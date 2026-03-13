@@ -9,7 +9,7 @@ html {
     font-size: calc(0.9rem + 0.1vw);
     scroll-behavior: smooth;
     line-height: 1.6;
-    text-rendering: optimizeSpeed;
+    text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -23,12 +23,11 @@ body {
     overflow-x: hidden;
     position: relative;
     font-size: 1rem;
-    padding-top: 100px;
     contain: layout style paint;
     will-change: scroll-position;
 }
 
-/* Image Optimization - Lazy Loading */
+/* Image Optimization - Lazy Loading - FIXED */
 img {
     max-width: 100%;
     height: auto;
@@ -39,23 +38,24 @@ img {
     decoding: async;
     transform: translateZ(0);
     transition: opacity 0.3s ease;
+    opacity: 1; /* ВСЕГДА видимы по умолчанию */
 }
 
-img:not([src]) {
+img:not([src]):not([data-src]) {
     opacity: 0;
 }
 
-img[src] {
+img[src], img[data-src] {
     opacity: 1;
 }
 
-/* Background Image Optimization - Fixed */
+/* Background Image Optimization - FIXED */
 [style*="background-image"] {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     transition: opacity 0.3s ease;
-    opacity: 0;
+    opacity: 1; /* ВСЕГДА видимы по умолчанию */
 }
 
 [style*="background-image"].loaded {
@@ -4750,10 +4750,18 @@ section {
 /* Mobile: 1 карточка */
 @media (max-width: 767px) {
     .glossary-carousel {
-        padding: 20px 50px; /* Меньше отступы для мобильных */
+        padding: 20px 40px; /* Меньше отступы для мобильных */
+    }
+    .carousel-wrapper {
+        max-width: 320px; /* Фиксированная ширина для 1 карточки */
+        margin: 0 auto;
     }
     .carousel-item {
-        flex: 0 0 100% !important;
+        flex: 0 0 320px !important; /* Фиксированная ширина карточки */
+        max-width: 320px;
+    }
+    .carousel-track {
+        justify-content: center; /* Центрирование карточки */
     }
 }
 

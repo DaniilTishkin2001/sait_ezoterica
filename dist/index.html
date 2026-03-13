@@ -28,33 +28,33 @@
     <meta name="ICBM" content="55.7558;37.6176">
     <meta name="geo.country" content="Russia">
     
-    <!-- Performance & Speed Optimizations -->
+    <!-- Performance Optimizations - Target: Score > 90 -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable">
-    <meta http-equiv="Expires" content="31536000">
     <meta name="theme-color" content="#0a0a0a">
-    <meta name="msapplication-TileColor" content="#0a0a0a">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="mobile-web-app-capable" content="yes">
     
-    <!-- Critical Preconnect (только 3 самых важных) -->
+    <!-- Critical Preconnect (max 3) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://mc.yandex.ru">
     
-    <!-- DNS Prefetch для остальных -->
+    <!-- DNS Prefetch for others -->
     <link rel="dns-prefetch" href="//www.googletagmanager.com">
     
-    <!-- Critical CSS Preload -->
+    <!-- Critical CSS inlined (< 2KB) + Full CSS preload -->
+    <style>*{box-sizing:border-box;margin:0;padding:0}html{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.5}body{background:#0a0a0a;color:#fff;opacity:0;transition:opacity .3s}.loaded{opacity:1}.header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(120,119,198,0.95);backdrop-filter:blur(10px);padding:1rem 0}.header__container{max-width:1200px;margin:0 auto;padding:0 1rem;display:flex;justify-content:space-between;align-items:center}.logo{font-size:1.5rem;font-weight:700;color:#fff;text-decoration:none;min-height:44px;display:flex;align-items:center}.nav{display:flex;gap:2rem}.nav__link{color:#fff;text-decoration:none;transition:color .3s;min-height:44px;display:flex;align-items:center}.nav__link:hover{color:#a8a7ff}.mobile-menu-btn{display:none;background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer;min-width:44px;min-height:44px;align-items:center}.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem 1rem;background:linear-gradient(135deg,rgba(120,119,198,0.1),rgba(168,167,255,0.1))}.hero__content{text-align:center;max-width:800px}.hero__title{font-size:clamp(2rem,5vw,4rem);font-weight:800;margin-bottom:1.5rem;background:linear-gradient(135deg,#fff,#f0f0ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.2}.hero__subtitle{font-size:clamp(1rem,2.5vw,1.5rem);margin-bottom:2rem;color:#a8a7ff}.btn{display:inline-block;padding:1rem 2rem;background:linear-gradient(135deg,#7877c6,#a8a7ff);color:#fff;text-decoration:none;border-radius:8px;font-weight:600;transition:transform .3s,box-shadow .3s;min-height:44px;min-width:44px;border:none;cursor:pointer}.btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(120,119,198,0.3)}.loading{opacity:0;transition:opacity .3s}.loaded{opacity:1}.container{max-width:1200px;margin:0 auto;padding:0 1rem}.section-title{font-size:2.5rem;font-weight:700;text-align:center;margin-bottom:1rem;color:#fff}.section-subtitle{font-size:1.2rem;text-align:center;margin-bottom:3rem;color:#a8a7ff;opacity:0.9}@media (max-width:768px){.mobile-menu-btn{display:flex}.nav{display:none}.hero__content{padding:1rem}.hero__title{font-size:clamp(1.5rem,8vw,2.5rem)}.hero__subtitle{font-size:clamp(0.9rem,4vw,1.2rem)}}</style>
     
-    <!-- Critical Images Preload (только ATF) -->
-    <link rel="preload" href="/images/5296603349773916388.1BQpnsnm.webp" as="image" importance="high">
+    <!-- Preload critical assets -->
+    <link rel="preload" href="/images/5296603349773916388.1BQpnsnm.webp" as="image" width="60" height="60" fetchpriority="high">
+    <link rel="preload" href="/images/5296603349773916432.CVQzhISD.webp" as="image" width="600" height="600" fetchpriority="high">
     
-    <!-- Font Preload -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+    <!-- Full CSS loading (fallback) -->
+    
+    <!-- Optimized fonts with font-display: swap -->
     
     <!-- Service Worker Registration -->
     <script>
@@ -1149,10 +1149,10 @@
              accurateTrackBounce:true
         });
     </script>
-      <script type="module" crossorigin src="/js/main.2aBPDOUU.js"></script>
+      <script type="module" crossorigin src="/js/main.BSX8fLTE.js"></script>
       <link rel="modulepreload" crossorigin href="/js/carousel.DMPF-Kci.js">
       <link rel="stylesheet" crossorigin href="/assets/carousel.Bv-7Jv6b.css">
-      <link rel="stylesheet" crossorigin href="/assets/main.XPmDcMh2.css">
+      <link rel="stylesheet" crossorigin href="/assets/main.AxuJ-gUq.css">
     </head>
     <body>
     <noscript><img src="https://mc.yandex.ru/watch/107236372" style="position:absolute; left:-9999px;" alt="" /></noscript>
@@ -2045,10 +2045,41 @@
 
     <!-- Оптимизированная загрузка скриптов для PageSpeed -->
     <script>
+    // Critical functionality - немедленно добавляем класс loaded
+    document.body.classList.add('loaded');
+    
+    // Performance monitoring
+    if ('PerformanceObserver' in window) {
+        new PerformanceObserver((list) => {
+            list.getEntries().forEach((entry) => {
+                if (entry.entryType === 'largest-contentful-paint') {
+                    console.log('LCP:', entry.startTime);
+                }
+                if (entry.entryType === 'layout-shift') {
+                    console.log('CLS:', entry.value);
+                }
+            });
+        }).observe({ entryTypes: ['largest-contentful-paint', 'layout-shift'] });
+    }
+    
     // Critical CSS inlined для быстрой отрисовки
     document.addEventListener('DOMContentLoaded', function() {
-        // Предотвращаем FOUC (Flash of Unstyled Content)
-        document.body.style.opacity = '1';
+        // Prevent CLS - reserve space for images
+        document.querySelectorAll('img[width][height]').forEach(img => {
+            img.style.aspectRatio = img.width + '/' + img.height;
+        });
+        
+        // Mobile menu
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const dropdown = document.querySelector('.mobile-dropdown');
+        
+        if (menuBtn && dropdown) {
+            menuBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                dropdown.classList.toggle('active');
+                menuBtn.setAttribute('aria-expanded', dropdown.classList.contains('active'));
+            }, { passive: true });
+        }
     });
     </script>
     

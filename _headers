@@ -1,0 +1,82 @@
+# Advanced Caching Headers for Performance Score > 90
+# Place in .htaccess or server configuration
+
+# Enable Gzip/Brotli compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+</IfModule>
+
+# Long-term caching for static assets
+<IfModule mod_expires.c>
+    ExpiresActive On
+    
+    # Images - cached for 1 year
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/avif "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    
+    # Fonts - cached for 1 year
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType font/eot "access plus 1 year"
+    
+    # CSS/JS - cached for 1 year with versioning
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType application/x-javascript "access plus 1 year"
+    
+    # HTML - cached for 1 hour
+    ExpiresByType text/html "access plus 1 hour"
+</IfModule>
+
+# Cache-Control headers
+<FilesMatch "\.(jpg|jpeg|png|gif|webp|avif|svg|woff|woff2|ttf|eot)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+</FilesMatch>
+
+<FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+</FilesMatch>
+
+<FilesMatch "\.(html)$">
+    Header set Cache-Control "public, max-age=3600"
+</FilesMatch>
+
+# Enable HTTP/2 Server Push for critical resources
+# (Requires server configuration)
+# Add this to your server config:
+# <FilesMatch "\.html$">
+#     Header add Link "</css/style.css>; rel=preload; as=style"
+#     Header add Link "</fonts/optimized-fonts.css>; rel=preload; as=style"
+#     Header add Link "<img/hero-image.webp>; rel=preload; as=image"
+# </FilesMatch>
+
+# Security headers
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options nosniff
+    Header always set X-Frame-Options DENY
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# Reduce server response time
+<IfModule mod_headers.c>
+    # Keep connections alive
+    Header set Connection keep-alive
+    
+    # Enable compression
+    Header set Content-Encoding gzip
+</IfModule>
