@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amadeya — эзотерический портал духовного развития</title>
+    <meta name="description" content="Amadeya — эзотерический портал духовного развития, энергетических практик и медитации">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://amadeya.org">
+    
+    <!-- Performance Optimizations -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <!-- Critical Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://mc.yandex.ru">
+    
+    <!-- Critical CSS inlined -->
+    <style>*{box-sizing:border-box;margin:0;padding:0}html{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.5}body{background:#0a0a0a;color:#fff;line-height:1.6;overflow-x:hidden}.header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(120,119,198,0.95);backdrop-filter:blur(10px);padding:1rem 0}.header__container{max-width:1200px;margin:0 auto;padding:0 1rem;display:flex;justify-content:space-between;align-items:center}.logo{font-size:1.5rem;font-weight:700;color:#fff;text-decoration:none;min-height:44px;display:flex;align-items:center}.nav{display:flex;gap:2rem}.nav__link{color:#fff;text-decoration:none;transition:color .3s;min-height:44px;display:flex;align-items:center}.nav__link:hover{color:#a8a7ff}.mobile-menu-btn{display:none;background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer;min-width:44px;min-height:44px;align-items:center}.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem 1rem;background:linear-gradient(135deg,rgba(120,119,198,0.1),rgba(168,167,255,0.1))}.hero__content{text-align:center;max-width:800px}.hero__title{font-size:clamp(2rem,5vw,4rem);font-weight:800;margin-bottom:1.5rem;background:linear-gradient(135deg,#fff,#f0f0ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.2}.hero__subtitle{font-size:clamp(1rem,2.5vw,1.5rem);margin-bottom:2rem;color:#a8a7ff}.btn{display:inline-block;padding:1rem 2rem;background:linear-gradient(135deg,#7877c6,#a8a7ff);color:#fff;text-decoration:none;border-radius:8px;font-weight:600;transition:transform .3s,box-shadow .3s;min-height:44px;min-width:44px;border:none;cursor:pointer}.btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(120,119,198,0.3)}.container{max-width:1200px;margin:0 auto;padding:0 1rem}.section-title{font-size:2.5rem;font-weight:700;text-align:center;margin-bottom:1rem;color:#fff}.section-subtitle{font-size:1.2rem;text-align:center;margin-bottom:3rem;color:#a8a7ff;opacity:0.9}@media (max-width:768px){.mobile-menu-btn{display:flex}.nav{display:none}.hero__content{padding:1rem}.hero__title{font-size:clamp(1.5rem,8vw,2.5rem)}.hero__subtitle{font-size:clamp(0.9rem,4vw,1.2rem)}}</style>
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="fonts/optimized-fonts.css" as="style">
+    <link rel="preload" href="img/5296603349773916388.webp" as="image" width="60" height="60" fetchpriority="high">
+    <link rel="preload" href="img/5296603349773916432.avif" as="image" type="image/avif" width="600" height="600" fetchpriority="high">
+    <link rel="preload" href="img/hero-mobile.avif" as="image" type="image/avif" width="386" height="386" media="(max-width: 768px)">
+    
+    <!-- Full CSS loading -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="fonts/optimized-fonts.css">
+    
+    <!-- Optimized fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="icon" href="favicon.ico">
+</head>
+<body>
+    <div class="stars-bg"></div>
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    
+    <header class="header" role="banner">
+        <nav class="nav" role="navigation">
+            <div class="nav__logo">
+                <picture>
+                    <source srcset="img/5296603349773916388.webp" type="image/webp">
+                    <img src="img/5296603349773916388.webp" alt="Amadeya Logo" class="logo-icon" 
+                         fetchpriority="high" loading="eager"
+                         sizes="(max-width: 768px) 40px, 60px">
+                </picture>
+            </div>
+            <div class="nav__links">
+                <a href="#about" class="nav__link" role="menuitem">О практике</a>
+                <a href="#programs" class="nav__link" role="menuitem">Программы</a>
+                <a href="#study-plan" class="nav__link" role="menuitem">План занятий</a>
+                <a href="#contact" class="nav__link" role="menuitem">Контакты</a>
+            </div>
+            <div class="nav__mobile">
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Открыть меню">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="mobile-dropdown" id="mobileDropdown">
+                    <div class="mobile-dropdown-content">
+                        <a href="#about" class="mobile-dropdown-link">О практике</a>
+                        <a href="#programs" class="mobile-dropdown-link">Программы</a>
+                        <a href="#study-plan" class="mobile-dropdown-link">План занятий</a>
+                        <a href="#contact" class="mobile-dropdown-link">Контакты</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main">
+        <section class="hero" id="hero" role="banner">
+            <div class="container">
+                <div class="hero__content">
+                    <div class="hero__text">
+                        <h1 class="hero__title">
+                            <span class="title-accent">Откройте</span> врата мудрости Таро
+                        </h1>
+                        <p class="hero__subtitle">
+                            Погрузитесь в мистический мир карт Таро и раскройте свою интуицию. 
+                            Обучение старшим и младшим арканам — это путь к глубокому самопознанию и духовному росту.
+                        </p>
+                        <div class="hero__buttons">
+                            <a href="https://t.me/Daniil_06_06_2001" class="btn btn--primary" rel="noopener noreferrer">
+                                <span class="btn__icon">✨</span>
+                                Начать путешествие
+                            </a>
+                            <button class="btn btn--secondary" onclick="scrollToSection('about')">
+                                Узнать больше
+                            </button>
+                        </div>
+                    </div>
+                    <div class="hero__visual">
+                        <div class="tarot-cards">
+                            <div class="card card-1">
+                                <div class="card__front">
+                                    <div class="card__symbol">☉</div>
+                                    <div class="card__name">Солнце</div>
+                                </div>
+                            </div>
+                            <div class="card card-2">
+                                <div class="card__front">
+                                    <div class="card__symbol">☽</div>
+                                    <div class="card__name">Луна</div>
+                                </div>
+                            </div>
+                            <div class="card card-3">
+                                <div class="card__front">
+                                    <div class="card__symbol">⭐</div>
+                                    <div class="card__name">Звезда</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Древняя мудрость в современном мире</h2>
+                    <p class="section-subtitle">
+                        Карты Таро — это не просто предсказание, а мощный инструмент для самопознания и духовного развития
+                    </p>
+                </div>
+                
+                <div class="about__grid">
+                    <article class="about__item" data-aos="fade-up">
+                        <picture>
+                            <!-- Mobile: 386px width - AVIF приоритет -->
+                            <source media="(max-width: 768px)" 
+                                    srcset="img/hero-mobile.avif 386w,
+                                            img/hero-mobile.webp 386w"
+                                    type="image/avif">
+                            
+                            <!-- Desktop: 600px width - AVIF приоритет -->
+                            <source srcset="img/5296603349773916432.avif 600w,
+                                          img/5296603349773916432.webp 600w"
+                                    type="image/avif">
+                            
+                            <!-- Fallback для старых браузеров -->
+                            <img src="img/5296603349773916432.webp" 
+                                 alt="Символический язык Таро" 
+                                 fetchpriority="high" 
+                                 loading="eager"
+                                 decoding="async"
+                                 width="600" 
+                                 height="600"
+                                 sizes="(max-width: 768px) 386px, 600px"
+                                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;">
+                        </picture>
+                        <div class="about__icon">✨</div>
+                        <h3>Символический язык</h3>
+                        <p>
+                            Каждая карта — это ключ к пониманию глубинных процессов души и закономерностей вселенной.
+                        </p>
+                    </article>
+                    
+                    <article class="about__item" data-aos="fade-up" data-aos-delay="100">
+                        <picture>
+                            <source srcset="img/5296603349773916438.webp" type="image/webp">
+                            <img src="img/5296603349773916438.webp" alt="Энергетическая связь с картами" 
+                                 fetchpriority="high" loading="lazy"
+                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;">
+                        </picture>
+                        <div class="about__icon">🌟</div>
+                        <h3>Энергетическая связь</h3>
+                        <p>
+                            Научитесь чувствовать вибрации карт и устанавливать глубокую связь с колодой.
+                        </p>
+                    </article>
+                    
+                    <article class="about__item" data-aos="fade-up" data-aos-delay="200">
+                        <picture>
+                            <source srcset="img/5296603349773916415.webp" type="image/webp">
+                            <img src="img/5296603349773916415.webp" alt="Интуитивное развитие" 
+                                 fetchpriority="high" loading="lazy"
+                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;">
+                        </picture>
+                        <div class="about__icon">💫</div>
+                        <h3>Интуитивное развитие</h3>
+                        <p>
+                            Развивайте внутреннее зрение и способность видеть скрытые связи между событиями.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <div class="container">
+                <div class="contact__content">
+                    <div class="contact__text">
+                        <h2 class="section-title">Начните свое путешествие сегодня</h2>
+                        <p>
+                            Каждый день откладывания — это упущенная возможность познать себя глубже. 
+                            Сделайте первый шаг к мудрости Таро прямо сейчас.
+                        </p>
+                        <div class="contact__info">
+                            <div class="contact__item">
+                                <div class="contact__icon">📱</div>
+                                <div>
+                                    <strong>Telegram:</strong>
+                                    <a href="https://t.me/Daniil_06_06_2001">@Daniil_06_06_2001</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact__visual">
+                        <div class="mystical-orb">
+                            <div class="orb-inner"></div>
+                            <div class="orb-particles"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__logo">
+                    <picture>
+                        <source srcset="img/5296603349773916388.webp" type="image/webp">
+                        <img src="img/5296603349773916388.webp" alt="Amadeya Logo" class="logo-icon" 
+                             fetchpriority="high" loading="eager"
+                             sizes="(max-width: 768px) 40px, 60px">
+                    </picture>
+                    <span>Амадея</span>
+                </div>
+                <p class="footer__text">
+                    2026 Амадея. Путь к духовному познанию через древнюю мудрость карт.
+                </p>
+                <div class="footer__social">
+                    <a href="https://t.me/Daniil_06_06_2001" class="social-link">
+                        <span>📱</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Telegram Floating Button -->
+    <a href="https://t.me/Daniil_06_06_2001" class="telegram-float-btn" target="_blank" rel="noopener noreferrer">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM16.64 8.28C16.49 9.9 15.84 13.92 15.51 15.77C15.37 16.53 15.09 16.78 14.85 16.81C14.33 16.87 13.93 16.48 13.43 16.15C12.64 15.64 12.19 15.31 11.43 14.81C10.54 14.23 11.11 13.9 11.61 13.39C11.76 13.24 13.86 11.33 13.91 11.12C13.92 11.09 13.92 11.04 13.89 11.01C13.86 10.98 13.82 10.99 13.79 11C13.75 11.01 12.48 12.18 10.09 14.52C9.73 14.88 9.4 15.06 9.11 15.04C8.79 15.02 8.19 14.79 7.74 14.59C7.19 14.35 6.75 14.23 6.78 13.92C6.8 13.76 7.03 13.59 7.46 13.42C9.43 12.64 13.73 10.83 16.35 8.99C16.51 8.87 16.71 8.81 16.87 8.85C17.03 8.89 17.15 9.03 17.19 9.21C17.25 9.39 17.28 9.6 17.26 9.81C17.24 10.02 17.15 10.18 16.64 8.28Z" fill="white"/>
+        </svg>
+    </a>
+
+    <!-- OPTIMIZED JavaScript loading -->
+    <script src="js/performance-optimized.js" defer></script>
+    
+    <!-- Deferred analytics loading -->
+    <script>
+    // Load analytics after page load for better performance
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            // Yandex Metrika
+            (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+            ym(12345678, "init", {});
+            
+            // Google Analytics
+            const script = document.createElement('script');
+            script.async = true;
+            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-DR16JPE3BX';
+            document.head.appendChild(script);
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-DR16JPE3BX');
+        }, 2000); // 2 секунды задержки
+    });
+    </script>
+    
+    <!-- Основной мобильной-оптимизированный скрипт -->
+    <script src="js/main-mobile-optimized.js" defer></script>
+    
+    <!-- Карусель как module -->
+    <script type="module" src="js/final-carousel.js"></script>
+</body>
+</html>

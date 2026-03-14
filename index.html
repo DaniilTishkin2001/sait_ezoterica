@@ -45,20 +45,27 @@
     <!-- DNS Prefetch for others -->
     <link rel="dns-prefetch" href="//www.googletagmanager.com">
     
-    <!-- Critical CSS inlined (< 2KB) - OPTIMIZED VERSION -->
+    <!-- Critical CSS inlined (< 2KB) - PERFORMANCE OPTIMIZED VERSION -->
     <style>*{box-sizing:border-box;margin:0;padding:0}html{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.5}body{background:#0a0a0a;color:#fff;line-height:1.6;overflow-x:hidden}.header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(120,119,198,0.95);backdrop-filter:blur(10px);padding:1rem 0}.header__container{max-width:1200px;margin:0 auto;padding:0 1rem;display:flex;justify-content:space-between;align-items:center}.logo{font-size:1.5rem;font-weight:700;color:#fff;text-decoration:none;min-height:44px;display:flex;align-items:center}.nav{display:flex;gap:2rem}.nav__link{color:#fff;text-decoration:none;transition:color .3s;min-height:44px;display:flex;align-items:center}.nav__link:hover{color:#a8a7ff}.mobile-menu-btn{display:none;background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer;min-width:44px;min-height:44px;align-items:center}.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem 1rem;background:linear-gradient(135deg,rgba(120,119,198,0.1),rgba(168,167,255,0.1))}.hero__content{text-align:center;max-width:800px}.hero__title{font-size:clamp(2rem,5vw,4rem);font-weight:800;margin-bottom:1.5rem;background:linear-gradient(135deg,#fff,#f0f0ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.2}.hero__subtitle{font-size:clamp(1rem,2.5vw,1.5rem);margin-bottom:2rem;color:#a8a7ff}.btn{display:inline-block;padding:1rem 2rem;background:linear-gradient(135deg,#7877c6,#a8a7ff);color:#fff;text-decoration:none;border-radius:8px;font-weight:600;transition:transform .3s,box-shadow .3s;min-height:44px;min-width:44px;border:none;cursor:pointer}.btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(120,119,198,0.3)}.loading{opacity:0;transition:opacity .3s}.loaded{opacity:1}.container{max-width:1200px;margin:0 auto;padding:0 1rem}.section-title{font-size:2.5rem;font-weight:700;text-align:center;margin-bottom:1rem;color:#fff}.section-subtitle{font-size:1.2rem;text-align:center;margin-bottom:3rem;color:#a8a7ff;opacity:0.9}@media (max-width:768px){.mobile-menu-btn{display:flex}.nav{display:none}.hero__content{padding:1rem}.hero__title{font-size:clamp(1.5rem,8vw,2.5rem)}.hero__subtitle{font-size:clamp(0.9rem,4vw,1.2rem)}}</style>
     
-    <!-- Preload critical assets -->
+    <!-- PRELOAD CRITICAL RESOURCES (высокий приоритет) -->
     <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="fonts/optimized-fonts.css" as="style">
+    <link rel="preload" href="css/carousel-lazy.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="img/5296603349773916388.webp" as="image" width="60" height="60" fetchpriority="high">
-    <link rel="preload" href="img/5296603349773916432.webp" as="image" width="600" height="600" fetchpriority="high">
+    <link rel="preload" href="img/5296603349773916432.avif" as="image" type="image/avif" width="600" height="600" fetchpriority="high">
+    <link rel="preload" href="img/hero-mobile.avif" as="image" type="image/avif" width="386" height="386" media="(max-width: 768px)">
     
-    <!-- Full CSS loading (fallback) -->
-    <link rel="stylesheet" href="css/style.css">
+    <!-- ЛОКАЛЬНЫЕ ШРИФТЫ - МАКСИМАЛЬНАЯ СКОРОСТЬ -->
+    <link rel="preload" href="fonts/local-fonts.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="fonts/local-fonts.css"></noscript>
     
-    <!-- Optimized fonts with font-display: swap -->
-    <link rel="stylesheet" href="fonts/optimized-fonts.css">
+    <!-- FALLBACK CSS (для старых браузеров) -->
+    <noscript>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="fonts/optimized-fonts.css">
+        <link rel="stylesheet" href="css/carousel-lazy.css">
+    </noscript>
     
     <!-- Service Worker Registration -->
     <script>
@@ -122,21 +129,6 @@
     
     <!-- Манифест для PWA -->
     <link rel="manifest" href="site.webmanifest">
-    
-    <!-- Предзагрузка критических изображений -->
-    <link rel="preload" href="img/5296603349773916465.webp" as="image">
-    <link rel="preload" href="img/5296603349773916730.webp" as="image">
-    <link rel="preload" href="img/5296603349773916388.webp" as="image">
-    
-    <!-- Предзагрузка шрифтов -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Предзагрузка критических стилей -->
-    <link rel="preload" href="css/style.css" as="style">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/carousel-lazy.css">
     
     <style>
         .about__item {
@@ -1274,29 +1266,7 @@
                     <h2 class="section-title">Древняя мудрость в современном мире</h2>
                     <p class="section-subtitle">
                         Карты Таро — это не просто предсказание, а мощный инструмент для самопознания и духовного развития
-                    </p>
-                </div>
-                
-                <div class="about__grid">
-                    <article class="about__item" data-aos="fade-up">
-                        <picture>
-                            <source srcset="img/5296603349773916432.webp" type="image/webp">
-                            <img src="img/5296603349773916432.webp" alt="Символический язык Таро" 
-                                 fetchpriority="high" loading="eager"
-                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;">
-                        </picture>
-                        <div class="about__icon">✨</div>
-                        <h3>Символический язык</h3>
-                        <p>
-                            Каждая карта — это ключ к пониманию глубинных процессов души и закономерностей вселенной.
                         </p>
-                    </article>
-                    <article class="about__item" data-aos="fade-up" data-aos-delay="100">
-                        <picture>
-                            <source srcset="img/5296603349773916438.webp" type="image/webp">
-                            <img src="img/5296603349773916438.webp" alt="Энергетическая связь с картами" 
-                                 fetchpriority="high" loading="eager"
                                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                  style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;">
                         </picture>
