@@ -78,6 +78,126 @@ class PerformanceOptimizer {
                     break;
                 case 'analytics':
                     this.initAnalytics();
+                    // Performance Optimized JavaScript - FINAL VERSION
+// Target: TBT < 150ms, Performance Score > 90
+
+// Immediately add loaded class for visual
+document.body.classList.add('loaded');
+
+// Performance monitoring
+if ('PerformanceObserver' in window) {
+    new PerformanceObserver((list) => {
+        list.getEntries().forEach((entry) => {
+            if (entry.entryType === 'largest-contentful-paint') {
+                console.log('LCP:', entry.startTime);
+            }
+            if (entry.entryType === 'layout-shift') {
+                console.log('CLS:', entry.value);
+            }
+        });
+    }).observe({ entryTypes: ['largest-contentful-paint', 'layout-shift'] });
+}
+
+// Mobile menu with passive listeners
+document.addEventListener('DOMContentLoaded', function() {
+    // Prevent CLS - reserve space for images
+    document.querySelectorAll('img[width][height]').forEach(img => {
+        img.style.aspectRatio = img.width + '/' + img.height;
+    });
+    
+    // Mobile menu
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const dropdown = document.querySelector('.mobile-dropdown');
+    
+    if (menuBtn && dropdown) {
+        menuBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            dropdown.classList.toggle('active');
+            menuBtn.setAttribute('aria-expanded', dropdown.classList.contains('active'));
+        }, { passive: true });
+    }
+    
+    // Smooth scroll with passive listener
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        }, { passive: true });
+    });
+});
+
+// Lazy loading for images (native support check)
+if ('loading' in HTMLImageElement.prototype) {
+    // Native lazy loading supported
+    console.log('Native lazy loading supported');
+} else {
+    // Fallback for older browsers
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.classList.remove('lazy');
+                observer.unobserve(img);
+            }
+        });
+    });
+    
+    document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+    });
+}
+
+// Optimized scroll events with throttling
+let scrollTimeout;
+window.addEventListener('scroll', () => {
+    if (scrollTimeout) {
+        window.cancelAnimationFrame(scrollTimeout);
+    }
+    
+    scrollTimeout = window.requestAnimationFrame(() => {
+        // Scroll-based animations here
+        const scrolled = window.pageYOffset;
+        const parallaxElements = document.querySelectorAll('.parallax');
+        
+        parallaxElements.forEach(element => {
+            const speed = element.dataset.speed || 0.5;
+            element.style.transform = `translateY(${scrolled * speed}px)`;
+        });
+    });
+}, { passive: true });
+
+// Touch optimization for mobile
+if ('ontouchstart' in window) {
+    document.addEventListener('touchstart', () => {}, { passive: true });
+    document.addEventListener('touchmove', () => {}, { passive: true });
+}
+
+// Preload critical resources
+function preloadCriticalResources() {
+    const criticalResources = [
+        { href: 'img/5296603349773916432.webp', as: 'image' },
+        { href: 'css/style.css', as: 'style' }
+    ];
+    
+    criticalResources.forEach(resource => {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.href = resource.href;
+        link.as = resource.as;
+        document.head.appendChild(link);
+    });
+}
+
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', preloadCriticalResources);
+} else {
+    preloadCriticalResources();
+}
                     break;
             }
             
